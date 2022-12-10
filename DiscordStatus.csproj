@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>DiscordStatus.ico</ApplicationIcon>
+    <AssemblyName>DiscordStatus</AssemblyName>
+    <RootNamespace>DiscordStatus</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="DiscordGameSDK\**" />
+    <Compile Remove="oobj\**" />
+    <Compile Remove="Source\**" />
+    <EmbeddedResource Remove="DiscordGameSDK\**" />
+    <EmbeddedResource Remove="oobj\**" />
+    <EmbeddedResource Remove="Source\**" />
+    <None Remove="DiscordGameSDK\**" />
+    <None Remove="oobj\**" />
+    <None Remove="Source\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="desktop.ini" />
+    <None Remove="DiscordStatus.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="DiscordStatus.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DiscordRichPresence" Version="1.1.3.18" />
+  </ItemGroup>
+
+</Project>
