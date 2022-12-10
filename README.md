@@ -1,7 +1,7 @@
 # Discord Status
 Программа для создания пользовательского статуса активности в Discord
 
-* Для работы программы требуется установить [`.NET Desktop Runtime 6.0`](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+* Для работы программы требуется установить [`.NET Desktop Runtime 6.0`](https://dotnet.microsoft.com/download/dotnet/6.0)
 
 ## Создание приложения в Discord
 Для работы программы необходимо создать приложение на [портале разработчиков Discord](https://discord.com/developers/applications)
