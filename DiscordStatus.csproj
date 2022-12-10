@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows7.0</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -10,18 +10,6 @@
     <AssemblyName>DiscordStatus</AssemblyName>
     <RootNamespace>DiscordStatus</RootNamespace>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="DiscordGameSDK\**" />
-    <Compile Remove="oobj\**" />
-    <Compile Remove="Source\**" />
-    <EmbeddedResource Remove="DiscordGameSDK\**" />
-    <EmbeddedResource Remove="oobj\**" />
-    <EmbeddedResource Remove="Source\**" />
-    <None Remove="DiscordGameSDK\**" />
-    <None Remove="oobj\**" />
-    <None Remove="Source\**" />
-  </ItemGroup>
 
   <ItemGroup>
     <None Remove="desktop.ini" />

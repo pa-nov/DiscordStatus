@@ -8,40 +8,30 @@ namespace DiscordStatus
 	{
 		DiscordRpcClient client;
 		bool IsElapsed = true, IsPublic = true;
+		Int64 CurrentAppID = 0;
 
-		public MainWindow()
-		{
-			InitializeComponent();
-		}
+		public MainWindow() { InitializeComponent(); }
 
 		private void StatusStart_Click(object sender, EventArgs e)
 		{
 			if (Int64.TryParse(AppIDBox.Text, out Int64 AppID))
 			{
-				if (client != null)
-				{
-					client.Dispose();
-				}
+				if (client != null) { client.Dispose(); }
 				client = new DiscordRpcClient(AppID.ToString());
 				client.RegisterUriScheme();
 				client.Initialize();
-			}
-			else
-			{
-				MessageBox.Show("ID Приложения указан неверно", "Ошибка при запуске");
-			}
+				CurrentAppID = AppID;
+			} else { MessageBox.Show("ID Приложения указан неверно", "Ошибка"); return; }
 		}
 
-		private void StatusStop_Click(object sender, EventArgs e)
-		{
-			if (client != null) { client.Dispose(); }
-		}
+		private void StatusStop_Click(object sender, EventArgs e) { if (client != null) { client.Dispose(); } }
 
 		private void StatusUpdate_Click(object sender, EventArgs e)
 		{
+			if (Int64.TryParse(AppIDBox.Text, out Int64 AppID) && CurrentAppID != AppID) { StatusStart_Click(null, null); }
 			if (client == null || !client.IsInitialized) { StatusStart_Click(null, null); }
 			if (client == null || !client.IsInitialized) { return; }
-
+			
 			RichPresence activity = new RichPresence();
 
 			if (StatusDetails.Text != "") { activity.Details = StatusDetails.Text; }
@@ -56,7 +46,7 @@ namespace DiscordStatus
 					activity.Party.Max = PartyMax;
 				}
 				else
-				{ MessageBox.Show("Количество игроков должно быть целым положительным числом", "Ошибка в количестве игроков"); }
+				{ MessageBox.Show("Количество игроков должно быть целым положительным числом", "Ошибка"); return; }
 			}
 			if (StatusHours.Text != "" || StatusMinutes.Text != "" || StatusSeconds.Text != "")
 			{
@@ -75,7 +65,7 @@ namespace DiscordStatus
 					{ activity.Timestamps.EndUnixMilliseconds = (ulong)(Time + NewTime * 1000); }
 				}
 				else
-				{ MessageBox.Show("Время (Часы, Минуты, Секунды) должны быть числами", "Ошибка в указании времени"); }
+				{ MessageBox.Show("Время (Часы, Минуты, Секунды) должны быть числами", "Ошибка"); return; }
 			}
 
 			if (StatusLargeKey.Text != "")
@@ -102,20 +92,27 @@ namespace DiscordStatus
 			DiscordRPC.Button button1 = null;
 			if (StatusButton1Text.Text != "" && StatusButton1Url.Text != "")
 			{
-				button1 = new DiscordRPC.Button()
+				if (Uri.IsWellFormedUriString(StatusButton1Url.Text, UriKind.Absolute))
 				{
-					Label = StatusButton1Text.Text,
-					Url = StatusButton1Url.Text,
-				};
+					button1 = new DiscordRPC.Button()
+					{
+						Label = StatusButton1Text.Text,
+						Url = StatusButton1Url.Text,
+					};
+				}
+				else { MessageBox.Show('"' + StatusButton1Url.Text + "' не является ссылкой", "Ошибка"); return; }
 			}
 			DiscordRPC.Button button2 = null;
 			if (StatusButton2Text.Text != "" && StatusButton2Url.Text != "")
 			{
-				button2 = new DiscordRPC.Button()
+				if (Uri.IsWellFormedUriString(StatusButton2Url.Text, UriKind.Absolute))
 				{
-					Label = StatusButton2Text.Text,
-					Url = StatusButton2Url.Text,
-				};
+					button2 = new DiscordRPC.Button()
+					{
+						Label = StatusButton2Text.Text,
+						Url = StatusButton2Url.Text,
+					};
+				} else { MessageBox.Show("'" + StatusButton2Url.Text + "' не является ссылкой", "Ошибка"); return; }
 			}
 			DiscordRPC.Button[] buttons = null;
 			if (button1 != null && button2 != null)
@@ -164,11 +161,7 @@ namespace DiscordStatus
 
 			client.SetPresence(activity);
 		}
-
-		private void TimerUpdate_Tick(object sender, EventArgs e)
-		{
-			if (client != null) { client.Invoke(); }
-		}
+		private void TimerUpdate_Tick(object sender, EventArgs e) { if (client != null) { client.Invoke(); } }
 
 		private void StatusElapsed_Click(object sender, EventArgs e)
 		{
@@ -271,9 +264,7 @@ namespace DiscordStatus
 		}
 
 		private void MenuOpenGitHub_Click(object sender, EventArgs e)
-		{
-			Process.Start(new ProcessStartInfo("https://github.com/pa-nov/DiscordStatus") { UseShellExecute = true });
-		}
+		{ Process.Start(new ProcessStartInfo("https://github.com/pa-nov/Discord-Status") { UseShellExecute = true }); }
 	}
 
 	public class StatusSettings
