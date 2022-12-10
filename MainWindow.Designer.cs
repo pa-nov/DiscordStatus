@@ -56,6 +56,7 @@
 			this.Menu = new System.Windows.Forms.MenuStrip();
 			this.MenuSave = new System.Windows.Forms.ToolStripMenuItem();
 			this.MenuLoad = new System.Windows.Forms.ToolStripMenuItem();
+			this.MenuOpenGitHub = new System.Windows.Forms.ToolStripMenuItem();
 			this.StatusPartyID = new System.Windows.Forms.TextBox();
 			this.StatusPartyMatch = new System.Windows.Forms.TextBox();
 			this.StatusPartyJoin = new System.Windows.Forms.TextBox();
@@ -63,7 +64,6 @@
 			this.PartyPrivacyText = new System.Windows.Forms.Label();
 			this.StatusPartyPrivacyPublic = new System.Windows.Forms.Button();
 			this.StatusPartyPrivacyPrivate = new System.Windows.Forms.Button();
-			this.MenuOpenGitHub = new System.Windows.Forms.ToolStripMenuItem();
 			this.Menu.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -355,6 +355,15 @@
 			this.MenuLoad.Text = "Загрузить";
 			this.MenuLoad.Click += new System.EventHandler(this.MenuLoad_Click);
 			// 
+			// MenuOpenGitHub
+			// 
+			this.MenuOpenGitHub.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+			this.MenuOpenGitHub.ForeColor = System.Drawing.Color.White;
+			this.MenuOpenGitHub.Name = "MenuOpenGitHub";
+			this.MenuOpenGitHub.Size = new System.Drawing.Size(56, 20);
+			this.MenuOpenGitHub.Text = "GitHub";
+			this.MenuOpenGitHub.Click += new System.EventHandler(this.MenuOpenGitHub_Click);
+			// 
 			// StatusPartyID
 			// 
 			this.StatusPartyID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
@@ -430,15 +439,6 @@
 			this.StatusPartyPrivacyPrivate.Text = "Закрытая";
 			this.StatusPartyPrivacyPrivate.UseVisualStyleBackColor = false;
 			this.StatusPartyPrivacyPrivate.Click += new System.EventHandler(this.StatusPartyPrivacyPrivate_Click);
-			// 
-			// MenuOpenGitHub
-			// 
-			this.MenuOpenGitHub.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-			this.MenuOpenGitHub.ForeColor = System.Drawing.Color.White;
-			this.MenuOpenGitHub.Name = "MenuOpenGitHub";
-			this.MenuOpenGitHub.Size = new System.Drawing.Size(56, 20);
-			this.MenuOpenGitHub.Text = "GitHub";
-			this.MenuOpenGitHub.Click += new System.EventHandler(this.MenuOpenGitHub_Click);
 			// 
 			// MainWindow
 			// 

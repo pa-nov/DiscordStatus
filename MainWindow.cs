@@ -42,6 +42,7 @@ namespace DiscordStatus
 					Int32.TryParse(StatusPartyMax.Text, out Int32 PartyMax) && PartyMax > 0)
 				{
 					activity.Party = new Party();
+					activity.Party.ID = "NULL";
 					activity.Party.Size = PartyMin;
 					activity.Party.Max = PartyMax;
 				}
