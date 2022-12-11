@@ -286,7 +286,7 @@ namespace DiscordStatus
 			if (settings.IsElapsed) { StatusElapsed_Click(null, null); } else { StatusRemaining_Click(null, null); }
 			if (settings.IsPublic) { StatusPartyPrivacyPublic_Click(null, null); } else { StatusPartyPrivacyPrivate_Click(null, null); }
 			IsCustomTime.Checked = settings.IsCustomTime;
-			CustomTimePicker.Value = new DateTime(1970, 1, 1, 0, 0, 0).AddMilliseconds(settings.CustomTime);
+			CustomTimePicker.Value = new DateTime(1970, 1, 1, 0, 0, 0).AddMilliseconds(settings.CustomTime).ToLocalTime();
 			AppIDBox.Text = settings.AppID;
 			StatusDetails.Text = settings.Details;
 			StatusState.Text = settings.State;
