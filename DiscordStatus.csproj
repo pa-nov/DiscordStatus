@@ -12,6 +12,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Wiki\**" />
+    <EmbeddedResource Remove="Wiki\**" />
+    <None Remove="Wiki\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="desktop.ini" />
     <None Remove="DiscordStatus.svg" />
   </ItemGroup>

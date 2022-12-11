@@ -56,6 +56,7 @@
 			this.Menu = new System.Windows.Forms.MenuStrip();
 			this.MenuSave = new System.Windows.Forms.ToolStripMenuItem();
 			this.MenuLoad = new System.Windows.Forms.ToolStripMenuItem();
+			this.MenuClear = new System.Windows.Forms.ToolStripMenuItem();
 			this.MenuOpenGitHub = new System.Windows.Forms.ToolStripMenuItem();
 			this.StatusPartyID = new System.Windows.Forms.TextBox();
 			this.StatusPartyMatch = new System.Windows.Forms.TextBox();
@@ -64,6 +65,9 @@
 			this.PartyPrivacyText = new System.Windows.Forms.Label();
 			this.StatusPartyPrivacyPublic = new System.Windows.Forms.Button();
 			this.StatusPartyPrivacyPrivate = new System.Windows.Forms.Button();
+			this.NotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+			this.CustomTimePicker = new System.Windows.Forms.DateTimePicker();
+			this.IsCustomTime = new System.Windows.Forms.CheckBox();
 			this.Menu.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -82,6 +86,7 @@
 			// 
 			this.StatusStart.FlatStyle = System.Windows.Forms.FlatStyle.System;
 			this.StatusStart.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+			this.StatusStart.ForeColor = System.Drawing.Color.Black;
 			this.StatusStart.Location = new System.Drawing.Point(288, 40);
 			this.StatusStart.Name = "StatusStart";
 			this.StatusStart.Size = new System.Drawing.Size(120, 32);
@@ -156,7 +161,8 @@
 			// 
 			this.StatusUpdate.FlatStyle = System.Windows.Forms.FlatStyle.System;
 			this.StatusUpdate.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-			this.StatusUpdate.Location = new System.Drawing.Point(336, 592);
+			this.StatusUpdate.ForeColor = System.Drawing.Color.Black;
+			this.StatusUpdate.Location = new System.Drawing.Point(336, 624);
 			this.StatusUpdate.Name = "StatusUpdate";
 			this.StatusUpdate.Size = new System.Drawing.Size(192, 48);
 			this.StatusUpdate.TabIndex = 8;
@@ -166,9 +172,11 @@
 			// 
 			// StatusElapsed
 			// 
+			this.StatusElapsed.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+			this.StatusElapsed.ForeColor = System.Drawing.Color.Black;
 			this.StatusElapsed.Location = new System.Drawing.Point(16, 184);
 			this.StatusElapsed.Name = "StatusElapsed";
-			this.StatusElapsed.Size = new System.Drawing.Size(128, 32);
+			this.StatusElapsed.Size = new System.Drawing.Size(113, 32);
 			this.StatusElapsed.TabIndex = 9;
 			this.StatusElapsed.Text = "Прошло";
 			this.StatusElapsed.UseVisualStyleBackColor = true;
@@ -177,10 +185,11 @@
 			// StatusRemaining
 			// 
 			this.StatusRemaining.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+			this.StatusRemaining.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
 			this.StatusRemaining.ForeColor = System.Drawing.Color.White;
-			this.StatusRemaining.Location = new System.Drawing.Point(144, 184);
+			this.StatusRemaining.Location = new System.Drawing.Point(129, 184);
 			this.StatusRemaining.Name = "StatusRemaining";
-			this.StatusRemaining.Size = new System.Drawing.Size(128, 32);
+			this.StatusRemaining.Size = new System.Drawing.Size(113, 32);
 			this.StatusRemaining.TabIndex = 10;
 			this.StatusRemaining.Text = "Осталось";
 			this.StatusRemaining.UseVisualStyleBackColor = false;
@@ -190,11 +199,11 @@
 			// 
 			this.StatusHours.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
 			this.StatusHours.ForeColor = System.Drawing.Color.White;
-			this.StatusHours.Location = new System.Drawing.Point(288, 184);
+			this.StatusHours.Location = new System.Drawing.Point(258, 184);
 			this.StatusHours.MaxLength = 5;
 			this.StatusHours.Name = "StatusHours";
 			this.StatusHours.PlaceholderText = "Часы";
-			this.StatusHours.Size = new System.Drawing.Size(80, 32);
+			this.StatusHours.Size = new System.Drawing.Size(90, 32);
 			this.StatusHours.TabIndex = 11;
 			this.StatusHours.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
@@ -202,11 +211,11 @@
 			// 
 			this.StatusMinutes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
 			this.StatusMinutes.ForeColor = System.Drawing.Color.White;
-			this.StatusMinutes.Location = new System.Drawing.Point(368, 184);
+			this.StatusMinutes.Location = new System.Drawing.Point(348, 184);
 			this.StatusMinutes.MaxLength = 5;
 			this.StatusMinutes.Name = "StatusMinutes";
 			this.StatusMinutes.PlaceholderText = "Мин.";
-			this.StatusMinutes.Size = new System.Drawing.Size(80, 32);
+			this.StatusMinutes.Size = new System.Drawing.Size(90, 32);
 			this.StatusMinutes.TabIndex = 12;
 			this.StatusMinutes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
@@ -214,11 +223,11 @@
 			// 
 			this.StatusSeconds.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
 			this.StatusSeconds.ForeColor = System.Drawing.Color.White;
-			this.StatusSeconds.Location = new System.Drawing.Point(448, 184);
+			this.StatusSeconds.Location = new System.Drawing.Point(438, 184);
 			this.StatusSeconds.MaxLength = 5;
 			this.StatusSeconds.Name = "StatusSeconds";
 			this.StatusSeconds.PlaceholderText = "Сек.";
-			this.StatusSeconds.Size = new System.Drawing.Size(80, 32);
+			this.StatusSeconds.Size = new System.Drawing.Size(90, 32);
 			this.StatusSeconds.TabIndex = 13;
 			this.StatusSeconds.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
@@ -226,7 +235,7 @@
 			// 
 			this.StatusLargeKey.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
 			this.StatusLargeKey.ForeColor = System.Drawing.Color.White;
-			this.StatusLargeKey.Location = new System.Drawing.Point(16, 240);
+			this.StatusLargeKey.Location = new System.Drawing.Point(16, 272);
 			this.StatusLargeKey.MaxLength = 256;
 			this.StatusLargeKey.Name = "StatusLargeKey";
 			this.StatusLargeKey.PlaceholderText = "Ключ большой картинки";
@@ -237,7 +246,7 @@
 			// 
 			this.StatusLargeText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
 			this.StatusLargeText.ForeColor = System.Drawing.Color.White;
-			this.StatusLargeText.Location = new System.Drawing.Point(272, 240);
+			this.StatusLargeText.Location = new System.Drawing.Point(272, 272);
 			this.StatusLargeText.MaxLength = 128;
 			this.StatusLargeText.Name = "StatusLargeText";
 			this.StatusLargeText.PlaceholderText = "Текст большой картинки";
@@ -248,7 +257,7 @@
 			// 
 			this.StatusSmallKey.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
 			this.StatusSmallKey.ForeColor = System.Drawing.Color.White;
-			this.StatusSmallKey.Location = new System.Drawing.Point(16, 288);
+			this.StatusSmallKey.Location = new System.Drawing.Point(16, 320);
 			this.StatusSmallKey.MaxLength = 256;
 			this.StatusSmallKey.Name = "StatusSmallKey";
 			this.StatusSmallKey.PlaceholderText = "Ключ маленькой картинки";
@@ -259,7 +268,7 @@
 			// 
 			this.StatusSmallText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
 			this.StatusSmallText.ForeColor = System.Drawing.Color.White;
-			this.StatusSmallText.Location = new System.Drawing.Point(272, 288);
+			this.StatusSmallText.Location = new System.Drawing.Point(272, 320);
 			this.StatusSmallText.MaxLength = 128;
 			this.StatusSmallText.Name = "StatusSmallText";
 			this.StatusSmallText.PlaceholderText = "Текст маленькой картинки";
@@ -270,7 +279,7 @@
 			// 
 			this.StatusButton1Text.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
 			this.StatusButton1Text.ForeColor = System.Drawing.Color.White;
-			this.StatusButton1Text.Location = new System.Drawing.Point(16, 344);
+			this.StatusButton1Text.Location = new System.Drawing.Point(16, 376);
 			this.StatusButton1Text.MaxLength = 32;
 			this.StatusButton1Text.Name = "StatusButton1Text";
 			this.StatusButton1Text.PlaceholderText = "Название";
@@ -281,7 +290,7 @@
 			// 
 			this.StatusButton1Url.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
 			this.StatusButton1Url.ForeColor = System.Drawing.Color.White;
-			this.StatusButton1Url.Location = new System.Drawing.Point(144, 344);
+			this.StatusButton1Url.Location = new System.Drawing.Point(144, 376);
 			this.StatusButton1Url.MaxLength = 512;
 			this.StatusButton1Url.Name = "StatusButton1Url";
 			this.StatusButton1Url.PlaceholderText = "Ссылка первой кнопки";
@@ -292,7 +301,7 @@
 			// 
 			this.StatusButton2Text.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
 			this.StatusButton2Text.ForeColor = System.Drawing.Color.White;
-			this.StatusButton2Text.Location = new System.Drawing.Point(16, 392);
+			this.StatusButton2Text.Location = new System.Drawing.Point(16, 424);
 			this.StatusButton2Text.MaxLength = 32;
 			this.StatusButton2Text.Name = "StatusButton2Text";
 			this.StatusButton2Text.PlaceholderText = "Название";
@@ -303,7 +312,7 @@
 			// 
 			this.StatusButton2Url.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
 			this.StatusButton2Url.ForeColor = System.Drawing.Color.White;
-			this.StatusButton2Url.Location = new System.Drawing.Point(144, 392);
+			this.StatusButton2Url.Location = new System.Drawing.Point(144, 424);
 			this.StatusButton2Url.MaxLength = 512;
 			this.StatusButton2Url.Name = "StatusButton2Url";
 			this.StatusButton2Url.PlaceholderText = "Ссылка второй кнопки";
@@ -314,6 +323,7 @@
 			// 
 			this.StatusStop.FlatStyle = System.Windows.Forms.FlatStyle.System;
 			this.StatusStop.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+			this.StatusStop.ForeColor = System.Drawing.Color.Black;
 			this.StatusStop.Location = new System.Drawing.Point(408, 40);
 			this.StatusStop.Name = "StatusStop";
 			this.StatusStop.Size = new System.Drawing.Size(120, 32);
@@ -329,6 +339,7 @@
 			this.Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuSave,
             this.MenuLoad,
+            this.MenuClear,
             this.MenuOpenGitHub});
 			this.Menu.Location = new System.Drawing.Point(0, 0);
 			this.Menu.Name = "Menu";
@@ -355,6 +366,15 @@
 			this.MenuLoad.Text = "Загрузить";
 			this.MenuLoad.Click += new System.EventHandler(this.MenuLoad_Click);
 			// 
+			// MenuClear
+			// 
+			this.MenuClear.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+			this.MenuClear.ForeColor = System.Drawing.Color.White;
+			this.MenuClear.Name = "MenuClear";
+			this.MenuClear.Size = new System.Drawing.Size(73, 20);
+			this.MenuClear.Text = "Очистить";
+			this.MenuClear.Click += new System.EventHandler(this.MenuClear_Click);
+			// 
 			// MenuOpenGitHub
 			// 
 			this.MenuOpenGitHub.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -368,7 +388,7 @@
 			// 
 			this.StatusPartyID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
 			this.StatusPartyID.ForeColor = System.Drawing.Color.White;
-			this.StatusPartyID.Location = new System.Drawing.Point(16, 448);
+			this.StatusPartyID.Location = new System.Drawing.Point(16, 480);
 			this.StatusPartyID.MaxLength = 128;
 			this.StatusPartyID.Name = "StatusPartyID";
 			this.StatusPartyID.PlaceholderText = "ID Группы";
@@ -379,7 +399,7 @@
 			// 
 			this.StatusPartyMatch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
 			this.StatusPartyMatch.ForeColor = System.Drawing.Color.White;
-			this.StatusPartyMatch.Location = new System.Drawing.Point(280, 448);
+			this.StatusPartyMatch.Location = new System.Drawing.Point(280, 480);
 			this.StatusPartyMatch.MaxLength = 128;
 			this.StatusPartyMatch.Name = "StatusPartyMatch";
 			this.StatusPartyMatch.PlaceholderText = "Хэш матча";
@@ -390,7 +410,7 @@
 			// 
 			this.StatusPartyJoin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
 			this.StatusPartyJoin.ForeColor = System.Drawing.Color.White;
-			this.StatusPartyJoin.Location = new System.Drawing.Point(16, 496);
+			this.StatusPartyJoin.Location = new System.Drawing.Point(16, 528);
 			this.StatusPartyJoin.MaxLength = 128;
 			this.StatusPartyJoin.Name = "StatusPartyJoin";
 			this.StatusPartyJoin.PlaceholderText = "Хэш присоединения";
@@ -401,7 +421,7 @@
 			// 
 			this.StatusPartySpectate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
 			this.StatusPartySpectate.ForeColor = System.Drawing.Color.White;
-			this.StatusPartySpectate.Location = new System.Drawing.Point(280, 496);
+			this.StatusPartySpectate.Location = new System.Drawing.Point(280, 528);
 			this.StatusPartySpectate.MaxLength = 128;
 			this.StatusPartySpectate.Name = "StatusPartySpectate";
 			this.StatusPartySpectate.PlaceholderText = "Хэш наблюдения";
@@ -412,7 +432,7 @@
 			// 
 			this.PartyPrivacyText.AutoSize = true;
 			this.PartyPrivacyText.ForeColor = System.Drawing.Color.White;
-			this.PartyPrivacyText.Location = new System.Drawing.Point(10, 548);
+			this.PartyPrivacyText.Location = new System.Drawing.Point(10, 580);
 			this.PartyPrivacyText.Name = "PartyPrivacyText";
 			this.PartyPrivacyText.Size = new System.Drawing.Size(129, 25);
 			this.PartyPrivacyText.TabIndex = 28;
@@ -420,7 +440,8 @@
 			// 
 			// StatusPartyPrivacyPublic
 			// 
-			this.StatusPartyPrivacyPublic.Location = new System.Drawing.Point(144, 544);
+			this.StatusPartyPrivacyPublic.ForeColor = System.Drawing.Color.Black;
+			this.StatusPartyPrivacyPublic.Location = new System.Drawing.Point(144, 576);
 			this.StatusPartyPrivacyPublic.Name = "StatusPartyPrivacyPublic";
 			this.StatusPartyPrivacyPublic.Size = new System.Drawing.Size(192, 32);
 			this.StatusPartyPrivacyPublic.TabIndex = 29;
@@ -432,7 +453,7 @@
 			// 
 			this.StatusPartyPrivacyPrivate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
 			this.StatusPartyPrivacyPrivate.ForeColor = System.Drawing.Color.White;
-			this.StatusPartyPrivacyPrivate.Location = new System.Drawing.Point(336, 544);
+			this.StatusPartyPrivacyPrivate.Location = new System.Drawing.Point(336, 576);
 			this.StatusPartyPrivacyPrivate.Name = "StatusPartyPrivacyPrivate";
 			this.StatusPartyPrivacyPrivate.Size = new System.Drawing.Size(192, 32);
 			this.StatusPartyPrivacyPrivate.TabIndex = 30;
@@ -440,11 +461,46 @@
 			this.StatusPartyPrivacyPrivate.UseVisualStyleBackColor = false;
 			this.StatusPartyPrivacyPrivate.Click += new System.EventHandler(this.StatusPartyPrivacyPrivate_Click);
 			// 
+			// NotifyIcon
+			// 
+			this.NotifyIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+			this.NotifyIcon.BalloonTipText = "Discord Status";
+			this.NotifyIcon.BalloonTipTitle = "Программа была скрыта";
+			this.NotifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("NotifyIcon.Icon")));
+			this.NotifyIcon.Text = "Discord Status";
+			this.NotifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon_MouseClick);
+			// 
+			// CustomTimePicker
+			// 
+			this.CustomTimePicker.CalendarFont = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+			this.CustomTimePicker.CustomFormat = " dd.MM.yyyy  HH:mm:ss";
+			this.CustomTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.CustomTimePicker.Location = new System.Drawing.Point(258, 216);
+			this.CustomTimePicker.MaxDate = new System.DateTime(3000, 12, 31, 0, 0, 0, 0);
+			this.CustomTimePicker.MinDate = new System.DateTime(1970, 1, 1, 0, 0, 0, 0);
+			this.CustomTimePicker.Name = "CustomTimePicker";
+			this.CustomTimePicker.Size = new System.Drawing.Size(270, 32);
+			this.CustomTimePicker.TabIndex = 31;
+			this.CustomTimePicker.Value = new System.DateTime(2022, 12, 12, 12, 0, 0, 0);
+			// 
+			// IsCustomTime
+			// 
+			this.IsCustomTime.AutoSize = true;
+			this.IsCustomTime.ForeColor = System.Drawing.Color.White;
+			this.IsCustomTime.Location = new System.Drawing.Point(50, 218);
+			this.IsCustomTime.Name = "IsCustomTime";
+			this.IsCustomTime.Size = new System.Drawing.Size(173, 29);
+			this.IsCustomTime.TabIndex = 32;
+			this.IsCustomTime.Text = "Точное время";
+			this.IsCustomTime.UseVisualStyleBackColor = true;
+			// 
 			// MainWindow
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-			this.ClientSize = new System.Drawing.Size(544, 656);
+			this.ClientSize = new System.Drawing.Size(544, 688);
+			this.Controls.Add(this.IsCustomTime);
+			this.Controls.Add(this.CustomTimePicker);
 			this.Controls.Add(this.StatusPartyPrivacyPrivate);
 			this.Controls.Add(this.StatusPartyPrivacyPublic);
 			this.Controls.Add(this.PartyPrivacyText);
@@ -482,6 +538,7 @@
 			this.MaximizeBox = false;
 			this.Name = "MainWindow";
 			this.Text = "Discord Status";
+			this.SizeChanged += new System.EventHandler(this.MainWindow_SizeChanged);
 			this.Menu.ResumeLayout(false);
 			this.Menu.PerformLayout();
 			this.ResumeLayout(false);
@@ -524,5 +581,9 @@
 		private Button StatusPartyPrivacyPublic;
 		private Button StatusPartyPrivacyPrivate;
 		private ToolStripMenuItem MenuOpenGitHub;
+		private NotifyIcon NotifyIcon;
+		private ToolStripMenuItem MenuClear;
+		private DateTimePicker CustomTimePicker;
+		private CheckBox IsCustomTime;
 	}
 }

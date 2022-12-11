@@ -10,7 +10,7 @@ namespace DiscordStatus
 		bool IsElapsed = true, IsPublic = true;
 		Int64 CurrentAppID = 0;
 
-		public MainWindow() { InitializeComponent(); }
+		public MainWindow() { InitializeComponent(); try { SettingsLoad("AutoSave"); } catch { } }
 
 		private void StatusStart_Click(object sender, EventArgs e)
 		{
@@ -49,24 +49,35 @@ namespace DiscordStatus
 				else
 				{ MessageBox.Show("Количество игроков должно быть целым положительным числом", "Ошибка"); return; }
 			}
-			if (StatusHours.Text != "" || StatusMinutes.Text != "" || StatusSeconds.Text != "")
+			if (!IsCustomTime.Checked)
 			{
-				Int64 Hours = 0, Minutes = 0, Seconds = 0;
-				bool IsHours = Int64.TryParse(StatusHours.Text, out Hours);
-				bool IsMinutes = Int64.TryParse(StatusMinutes.Text, out Minutes);
-				bool IsSeconds = Int64.TryParse(StatusSeconds.Text, out Seconds);
-				if (IsHours || IsMinutes || IsSeconds)
+				if (StatusHours.Text != "" || StatusMinutes.Text != "" || StatusSeconds.Text != "")
 				{
-					activity.Timestamps = new Timestamps();
-					Int64 Time = ((DateTimeOffset)DateTime.Now).ToUnixTimeMilliseconds();
-					Int64 NewTime = Seconds + Minutes * 60 + Hours * 3600;
-					if (IsElapsed)
-					{ activity.Timestamps.StartUnixMilliseconds = (ulong)(Time - NewTime * 1000); }
+					Int64 Hours = 0, Minutes = 0, Seconds = 0;
+					bool IsHours = Int64.TryParse(StatusHours.Text, out Hours);
+					bool IsMinutes = Int64.TryParse(StatusMinutes.Text, out Minutes);
+					bool IsSeconds = Int64.TryParse(StatusSeconds.Text, out Seconds);
+					if (IsHours || IsMinutes || IsSeconds)
+					{
+						activity.Timestamps = new Timestamps();
+						Int64 Time = ((DateTimeOffset)DateTime.Now).ToUnixTimeMilliseconds();
+						Int64 NewTime = Seconds + Minutes * 60 + Hours * 3600;
+						if (IsElapsed)
+						{ activity.Timestamps.StartUnixMilliseconds = (ulong)(Time - NewTime * 1000); }
+						else
+						{ activity.Timestamps.EndUnixMilliseconds = (ulong)(Time + NewTime * 1000); }
+					}
 					else
-					{ activity.Timestamps.EndUnixMilliseconds = (ulong)(Time + NewTime * 1000); }
+					{ MessageBox.Show("Время (Часы, Минуты, Секунды) должны быть числами", "Ошибка"); return; }
 				}
+			}
+			else
+			{
+				activity.Timestamps = new Timestamps();
+				if (IsElapsed)
+				{ activity.Timestamps.StartUnixMilliseconds = (ulong)((DateTimeOffset)CustomTimePicker.Value).ToUnixTimeMilliseconds(); }
 				else
-				{ MessageBox.Show("Время (Часы, Минуты, Секунды) должны быть числами", "Ошибка"); return; }
+				{ activity.Timestamps.EndUnixMilliseconds = (ulong)((DateTimeOffset)CustomTimePicker.Value).ToUnixTimeMilliseconds(); }
 			}
 
 			if (StatusLargeKey.Text != "")
@@ -161,13 +172,14 @@ namespace DiscordStatus
 			}
 
 			client.SetPresence(activity);
+			SettingsSave("AutoSave");
 		}
 		private void TimerUpdate_Tick(object sender, EventArgs e) { if (client != null) { client.Invoke(); } }
 
 		private void StatusElapsed_Click(object sender, EventArgs e)
 		{
 			StatusElapsed.BackColor = Color.White;
-			StatusElapsed.ForeColor = Color.FromArgb(255, 64, 68, 75);
+			StatusElapsed.ForeColor = Color.Black;
 			StatusRemaining.BackColor = Color.FromArgb(255, 64, 68, 75);
 			StatusRemaining.ForeColor = Color.White;
 			IsElapsed = true;
@@ -177,14 +189,14 @@ namespace DiscordStatus
 			StatusElapsed.BackColor = Color.FromArgb(255, 64, 68, 75);
 			StatusElapsed.ForeColor = Color.White;
 			StatusRemaining.BackColor = Color.White;
-			StatusRemaining.ForeColor = Color.FromArgb(255, 64, 68, 75);
+			StatusRemaining.ForeColor = Color.Black;
 			IsElapsed = false;
 		}
 
 		private void StatusPartyPrivacyPublic_Click(object sender, EventArgs e)
 		{
 			StatusPartyPrivacyPublic.BackColor = Color.White;
-			StatusPartyPrivacyPublic.ForeColor = Color.FromArgb(255, 64, 68, 75);
+			StatusPartyPrivacyPublic.ForeColor = Color.Black;
 			StatusPartyPrivacyPrivate.BackColor = Color.FromArgb(255, 64, 68, 75);
 			StatusPartyPrivacyPrivate.ForeColor = Color.White;
 			IsPublic = true;
@@ -194,16 +206,56 @@ namespace DiscordStatus
 			StatusPartyPrivacyPublic.BackColor = Color.FromArgb(255, 64, 68, 75);
 			StatusPartyPrivacyPublic.ForeColor = Color.White;
 			StatusPartyPrivacyPrivate.BackColor = Color.White;
-			StatusPartyPrivacyPrivate.ForeColor = Color.FromArgb(255, 64, 68, 75);
+			StatusPartyPrivacyPrivate.ForeColor = Color.Black;
 			IsPublic = false;
 		}
 
 		private void MenuSave_Click(object sender, EventArgs e)
 		{
+			SaveFileDialog saveFileDialog = new SaveFileDialog();
+			saveFileDialog.Filter = "Файл настроек (*.json)|*.json";
+			if (saveFileDialog.ShowDialog() == DialogResult.OK) { SettingsSave(saveFileDialog.FileName); }
+		}
+		private void MenuLoad_Click(object sender, EventArgs e)
+		{
+			OpenFileDialog openFileDialog = new OpenFileDialog();
+			openFileDialog.Filter = "Файл настроек (*.json)|*.json";
+			if (openFileDialog.ShowDialog() == DialogResult.OK) { SettingsLoad(openFileDialog.FileName); }
+		}
+		private void MenuClear_Click(object sender, EventArgs e) {
+			if (MessageBox.Show("Вы уверенны?", "Очистка", MessageBoxButtons.OKCancel) == DialogResult.OK)
+			{
+				SettingsLoad("");
+			}
+		}
+
+		private void MenuOpenGitHub_Click(object sender, EventArgs e)
+		{ Process.Start(new ProcessStartInfo("https://github.com/pa-nov/Discord-Status") { UseShellExecute = true }); }
+
+		private void MainWindow_SizeChanged(object sender, EventArgs e)
+		{
+			if (this.WindowState == FormWindowState.Minimized)
+			{
+				this.Hide();
+				NotifyIcon.Visible = true;
+				NotifyIcon.ShowBalloonTip(1000);
+			}
+		}
+		private void NotifyIcon_MouseClick(object sender, MouseEventArgs e)
+		{
+			this.Show();
+			NotifyIcon.Visible = false;
+			this.WindowState = FormWindowState.Normal;
+		}
+
+		private void SettingsSave(string path)
+		{
 			StatusSettings settings = new StatusSettings
 			{
 				IsElapsed = IsElapsed,
 				IsPublic = IsPublic,
+				IsCustomTime = IsCustomTime.Checked,
+				CustomTime = ((DateTimeOffset)CustomTimePicker.Value).ToUnixTimeMilliseconds(),
 				AppID = AppIDBox.Text,
 				Details = StatusDetails.Text,
 				State = StatusState.Text,
@@ -225,53 +277,45 @@ namespace DiscordStatus
 				PartyJoin = StatusPartyJoin.Text,
 				PartySpectate = StatusPartySpectate.Text,
 			};
-			SaveFileDialog openFileDialog = new SaveFileDialog();
-			openFileDialog.Filter = "Файл настроек (*.json)|*.json";
-			if (openFileDialog.ShowDialog() == DialogResult.OK)
-			{
-				File.WriteAllText(openFileDialog.FileName, JsonSerializer.Serialize(settings));
-			}
+			File.WriteAllText(path, JsonSerializer.Serialize(settings));
 		}
-		private void MenuLoad_Click(object sender, EventArgs e)
+		private void SettingsLoad(string path)
 		{
-			OpenFileDialog openFileDialog = new OpenFileDialog();
-			openFileDialog.Filter = "Файл настроек (*.json)|*.json";
-			if (openFileDialog.ShowDialog() == DialogResult.OK)
-			{
-				StatusSettings settings = JsonSerializer.Deserialize<StatusSettings>(File.ReadAllText(openFileDialog.FileName))!;
-				if (settings.IsElapsed) { StatusElapsed_Click(null, null); } else { StatusRemaining_Click(null, null); }
-				if (settings.IsPublic) { StatusPartyPrivacyPublic_Click(null, null); } else { StatusPartyPrivacyPrivate_Click(null, null); }
-				AppIDBox.Text = settings.AppID;
-				StatusDetails.Text = settings.Details;
-				StatusState.Text = settings.State;
-				StatusPartyMin.Text = settings.PartyMin;
-				StatusPartyMax.Text = settings.PartyMax;
-				StatusHours.Text = settings.Hours;
-				StatusMinutes.Text = settings.Minutes;
-				StatusSeconds.Text = settings.Seconds;
-				StatusLargeKey.Text = settings.LargeKey;
-				StatusLargeText.Text = settings.LargeText;
-				StatusSmallKey.Text = settings.SmallKey;
-				StatusSmallText.Text = settings.SmallText;
-				StatusButton1Text.Text = settings.Button1Text;
-				StatusButton1Url.Text = settings.Button1Url;
-				StatusButton2Text.Text = settings.Button2Text;
-				StatusButton2Url.Text = settings.Button2Url;
-				StatusPartyID.Text = settings.PartyID;
-				StatusPartyMatch.Text = settings.PartyMatch;
-				StatusPartyJoin.Text = settings.PartyJoin;
-				StatusPartySpectate.Text = settings.PartySpectate;
-			}
+			StatusSettings settings = new StatusSettings();
+			if (path != "") { settings = JsonSerializer.Deserialize<StatusSettings>(File.ReadAllText(path))!; }
+			if (settings.IsElapsed) { StatusElapsed_Click(null, null); } else { StatusRemaining_Click(null, null); }
+			if (settings.IsPublic) { StatusPartyPrivacyPublic_Click(null, null); } else { StatusPartyPrivacyPrivate_Click(null, null); }
+			IsCustomTime.Checked = settings.IsCustomTime;
+			CustomTimePicker.Value = new DateTime(1970, 1, 1, 0, 0, 0).AddMilliseconds(settings.CustomTime);
+			AppIDBox.Text = settings.AppID;
+			StatusDetails.Text = settings.Details;
+			StatusState.Text = settings.State;
+			StatusPartyMin.Text = settings.PartyMin;
+			StatusPartyMax.Text = settings.PartyMax;
+			StatusHours.Text = settings.Hours;
+			StatusMinutes.Text = settings.Minutes;
+			StatusSeconds.Text = settings.Seconds;
+			StatusLargeKey.Text = settings.LargeKey;
+			StatusLargeText.Text = settings.LargeText;
+			StatusSmallKey.Text = settings.SmallKey;
+			StatusSmallText.Text = settings.SmallText;
+			StatusButton1Text.Text = settings.Button1Text;
+			StatusButton1Url.Text = settings.Button1Url;
+			StatusButton2Text.Text = settings.Button2Text;
+			StatusButton2Url.Text = settings.Button2Url;
+			StatusPartyID.Text = settings.PartyID;
+			StatusPartyMatch.Text = settings.PartyMatch;
+			StatusPartyJoin.Text = settings.PartyJoin;
+			StatusPartySpectate.Text = settings.PartySpectate;
 		}
-
-		private void MenuOpenGitHub_Click(object sender, EventArgs e)
-		{ Process.Start(new ProcessStartInfo("https://github.com/pa-nov/Discord-Status") { UseShellExecute = true }); }
 	}
 
 	public class StatusSettings
 	{
 		public bool IsElapsed { get; set; } = true;
 		public bool IsPublic { get; set; } = true;
+		public bool IsCustomTime { get; set; } = false;
+		public Int64 CustomTime { get; set; } = 1670835600000;
 		public string AppID { get; set; } = "";
 		public string Details { get; set; } = "";
 		public string State { get; set; } = "";
