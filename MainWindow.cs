@@ -28,10 +28,10 @@ namespace DiscordStatus
 
 		private void StatusUpdate_Click(object sender, EventArgs e)
 		{
-			if (Int64.TryParse(AppIDBox.Text, out Int64 AppID) && CurrentAppID != AppID) { StatusStart_Click(null, null); }
-			if (client == null || !client.IsInitialized) { StatusStart_Click(null, null); }
+			if (AppIDBox.Text != CurrentAppID.ToString() || client == null || !client.IsInitialized)
+			{ StatusStart_Click(new object(), new EventArgs()); }
 			if (client == null || !client.IsInitialized) { return; }
-			
+
 			RichPresence activity = new RichPresence();
 
 			if (StatusDetails.Text != "") { activity.Details = StatusDetails.Text; }
@@ -41,8 +41,8 @@ namespace DiscordStatus
 				if (Int32.TryParse(StatusPartyMin.Text, out Int32 PartyMin) && PartyMin > 0 &&
 					Int32.TryParse(StatusPartyMax.Text, out Int32 PartyMax) && PartyMax > 0)
 				{
+					if (StatusPartyID.Text == "") { StatusPartyID.Text = "NULL"; }
 					activity.Party = new Party();
-					activity.Party.ID = "NULL";
 					activity.Party.Size = PartyMin;
 					activity.Party.Max = PartyMax;
 				}
@@ -74,6 +74,8 @@ namespace DiscordStatus
 			else
 			{
 				activity.Timestamps = new Timestamps();
+				if (((DateTimeOffset)CustomTimePicker.Value).ToUnixTimeMilliseconds() < 1)
+				{ CustomTimePicker.Value = new DateTime(1970, 1, 1, 0, 0, 0).AddMilliseconds(1).ToLocalTime(); }
 				if (IsElapsed)
 				{ activity.Timestamps.StartUnixMilliseconds = (ulong)((DateTimeOffset)CustomTimePicker.Value).ToUnixTimeMilliseconds(); }
 				else
@@ -174,7 +176,8 @@ namespace DiscordStatus
 			client.SetPresence(activity);
 			SettingsSave("AutoSave");
 		}
-		private void TimerUpdate_Tick(object sender, EventArgs e) { if (client != null) { client.Invoke(); } }
+		private void TimerUpdate_Tick(object sender, EventArgs e)
+		{ if (client != null) { client.Invoke(); } }
 
 		private void StatusElapsed_Click(object sender, EventArgs e)
 		{
@@ -238,12 +241,14 @@ namespace DiscordStatus
 			{
 				this.Hide();
 				NotifyIcon.Visible = true;
-				NotifyIcon.ShowBalloonTip(1000);
+				NotifyIcon.ShowBalloonTip(0);
 			}
 		}
 		private void NotifyIcon_MouseClick(object sender, MouseEventArgs e)
 		{
 			this.Show();
+			this.BringToFront();
+			this.Focus();
 			NotifyIcon.Visible = false;
 			this.WindowState = FormWindowState.Normal;
 		}
@@ -279,12 +284,15 @@ namespace DiscordStatus
 			};
 			File.WriteAllText(path, JsonSerializer.Serialize(settings));
 		}
+
 		private void SettingsLoad(string path)
 		{
 			StatusSettings settings = new StatusSettings();
 			if (path != "") { settings = JsonSerializer.Deserialize<StatusSettings>(File.ReadAllText(path))!; }
-			if (settings.IsElapsed) { StatusElapsed_Click(null, null); } else { StatusRemaining_Click(null, null); }
-			if (settings.IsPublic) { StatusPartyPrivacyPublic_Click(null, null); } else { StatusPartyPrivacyPrivate_Click(null, null); }
+			if (settings.IsElapsed) { StatusElapsed_Click(new object(), new EventArgs()); }
+			else { StatusRemaining_Click(new object(), new EventArgs()); }
+			if (settings.IsPublic) { StatusPartyPrivacyPublic_Click(new object(), new EventArgs()); }
+			else { StatusPartyPrivacyPrivate_Click(new object(), new EventArgs()); }
 			IsCustomTime.Checked = settings.IsCustomTime;
 			CustomTimePicker.Value = new DateTime(1970, 1, 1, 0, 0, 0).AddMilliseconds(settings.CustomTime).ToLocalTime();
 			AppIDBox.Text = settings.AppID;
@@ -315,7 +323,7 @@ namespace DiscordStatus
 		public bool IsElapsed { get; set; } = true;
 		public bool IsPublic { get; set; } = true;
 		public bool IsCustomTime { get; set; } = false;
-		public Int64 CustomTime { get; set; } = 1670835600000;
+		public Int64 CustomTime { get; set; } = 1;
 		public string AppID { get; set; } = "";
 		public string Details { get; set; } = "";
 		public string State { get; set; } = "";

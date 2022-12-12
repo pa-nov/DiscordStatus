@@ -6,9 +6,24 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <ApplicationIcon>DiscordStatus.ico</ApplicationIcon>
     <AssemblyName>DiscordStatus</AssemblyName>
     <RootNamespace>DiscordStatus</RootNamespace>
+    <ApplicationIcon>DiscordStatus.ico</ApplicationIcon>
+    <NoWin32Manifest>true</NoWin32Manifest>
+    <NeutralLanguage>ru</NeutralLanguage>
+    <AssemblyVersion>1.0.2</AssemblyVersion>
+    <FileVersion>1.0.2</FileVersion>
+    <Company>PANOV</Company>
+    <Authors>PANOV</Authors>
+    <Version>1.0.2</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>embedded</DebugType>
   </PropertyGroup>
 
   <ItemGroup>
