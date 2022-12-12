@@ -28,5 +28,6 @@
 * Для каждой загруженной картинки укажите уникальный ключ (который необходимо написать в программе)
 * Сохраните изменение нажав кнопку `Save Changes`
 
+## Прочее
 * [Использование программы](https://github.com/pa-nov/Discord-Status/wiki/Usage)
 * [ID официальных приложений](https://github.com/pa-nov/Discord-Status/wiki/Apps)
