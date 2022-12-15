@@ -1,33 +1,34 @@
 # Discord Status
 Программа для создания пользовательского статуса активности в Discord
 
-* Для работы программы требуется установить [`.NET Desktop Runtime 6.0`](https://dotnet.microsoft.com/download/dotnet/6.0)
+***
+
+## Установка
+
+Для установки Discord Status нужно:
+* Установить [`.NET Desktop Runtime 6.0`](https://dotnet.microsoft.com/download/dotnet/6.0)
+* Распаковать архив скаченный из [релизов](https://github.com/pa-nov/Discord-Status/releases) в любую папку
+
+***
 
 ## Создание приложения в Discord
-Для работы программы необходимо создать приложение на [портале разработчиков Discord](https://discord.com/developers/applications)
+
+Для работы программы необходим ID приложения.
+
+Вы можете взять [один из официальных ID приложений](https://github.com/pa-nov/Discord-Status/wiki/ID-официальных-приложений) или создать своё приложение.
+
+Для этого:
 * Перейдите на [портал разработчиков Discord](https://discord.com/developers/applications) и авторизуйтесь
 * Нажмите на `New Application` в правом верхнем углу экрана
 * Укажите имя приложения (вы сможете поменять его позже)
-* Скопируте `APPLICATION ID`
-* Укажите скопированный ID в программе
+* Подтвердите создание приложения
 
-## Смена названия игры
-Поменять название игры можно только на [портале разработчиков Discord](https://discord.com/developers/applications)
-* Перейдите на [портал разработчиков Discord](https://discord.com/developers/applications) и авторизуйтесь
-* Нажмите на своё приложение
-* Напишите новое название в строку `NAME`
-* Сохраните изменение нажав кнопку `Save Changes`
+Теперь вы можете указать `APPLICATION ID` с этой страницы в программе.
 
-## Загрузка картинок
-Загрузка картинок так же происходит через [портал разработчиков Discord](https://discord.com/developers/applications)
-* Перейдите на [портал разработчиков Discord](https://discord.com/developers/applications) и авторизуйтесь
-* Нажмите на своё приложение
-* Если вы хотите изменить картинку приложения по умолчанию то измените `APP ICON` загрузив новую картинку, после чего сохраните изменение нажав кнопку `Save Changes`
-* Если вы хотите выбирать картинки в программе то нажмите на `Rich Presence` в левой части экрана
-* Нажмите на `Add Image(s)` и выберите картинки, которые хоите загрузить (Разрешение должно быть не меньше 512x512)
-* Для каждой загруженной картинки укажите уникальный ключ (который необходимо написать в программе)
-* Сохраните изменение нажав кнопку `Save Changes`
+***
 
 ## Прочее
-* [Использование программы](https://github.com/pa-nov/Discord-Status/wiki/Usage)
-* [ID официальных приложений](https://github.com/pa-nov/Discord-Status/wiki/Apps)
+* [Использование программы](https://github.com/pa-nov/Discord-Status/wiki/Использование-программы)
+* [Смена имени приложения](https://github.com/pa-nov/Discord-Status/wiki/Смена-имени-приложения)
+* [Загрузка изображений](https://github.com/pa-nov/Discord-Status/wiki/Загрузка-изображений)
+* [ID официальных приложений](https://github.com/pa-nov/Discord-Status/wiki/ID-официальных-приложений)
