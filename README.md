@@ -29,6 +29,6 @@
 
 ## Прочее
 * [Использование программы](https://github.com/pa-nov/Discord-Status/wiki/Использование-программы)
-* [Смена имени приложения](https://github.com/pa-nov/Discord-Status/wiki/Смена-имени-приложения)
+* [Смена названия приложения](https://github.com/pa-nov/Discord-Status/wiki/Смена-названия-приложения)
 * [Загрузка изображений](https://github.com/pa-nov/Discord-Status/wiki/Загрузка-изображений)
 * [ID официальных приложений](https://github.com/pa-nov/Discord-Status/wiki/ID-официальных-приложений)
