@@ -1,7 +1,7 @@
 # Discord Status
 Программа для создания пользовательского статуса активности в Discord
 
-![](https://user-images.githubusercontent.com/93487621/207969289-a21e2a91-c63a-46fa-94b0-0adb540cb12c.png)
+![](https://user-images.githubusercontent.com/93487621/208197028-e56cbc07-a4ad-462e-8b0e-a7d9a520d23f.png)
 
 ***
 
