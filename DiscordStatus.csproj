@@ -8,8 +8,8 @@
 		<RootNamespace>DiscordStatus</RootNamespace>
 
 		<AssemblyName>Discord-Status</AssemblyName>
-		<AssemblyTitle>Программа для статуса в Discord</AssemblyTitle>
-		<Version>1.0.3</Version>
+		<AssemblyTitle>Discord Status</AssemblyTitle>
+		<Version>1.0.4</Version>
 		<Authors>PANOV</Authors>
 		<Configurations>Release</Configurations>
 		<ApplicationIcon>DiscordStatus.ico</ApplicationIcon>

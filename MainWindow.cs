@@ -105,6 +105,9 @@ namespace DiscordStatus
 			{
 				return;
 			}
+			string IamgeKeysState = ImageKeysState.Text;
+			AppIDBox.Text = AppIDBox.Text.Trim();
+			ImageKeysState.Text = IamgeKeysState;
 
 			RichPresence activity = new RichPresence();
 
@@ -413,11 +416,22 @@ namespace DiscordStatus
 					StatusSmallKey.Items.Add(assetsArray[i]["name"]);
 				}
 
-				ImageKeysState.Text = "Ключи изображений загружены";
+				if (assetsArray.Count > 0)
+				{
+					ImageKeysState.Text = "Ключи изображений загружены";
+				}
+				else
+				{
+					ImageKeysState.Text = "У приложения отсутствуют изображения";
+					StatusLargeKey.Items.Add("");
+					StatusSmallKey.Items.Add("");
+				}
 			}
 			catch
 			{
 				ImageKeysState.Text = "Приложение не найдено";
+				StatusLargeKey.Items.Add("");
+				StatusSmallKey.Items.Add("");
 			}
 		}
 
@@ -500,6 +514,7 @@ namespace DiscordStatus
 			StatusPartyMatch.Text = settings.PartyMatch;
 			StatusPartyJoin.Text = settings.PartyJoin;
 			StatusPartySpectate.Text = settings.PartySpectate;
+			ImageKeysUpdateVoid();
 		}
 
 		private bool NotEmpty(TextBox textBox)

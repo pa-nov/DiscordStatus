@@ -241,22 +241,22 @@
 			// 
 			this.StatusLargeText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
 			this.StatusLargeText.ForeColor = System.Drawing.Color.White;
-			this.StatusLargeText.Location = new System.Drawing.Point(272, 280);
+			this.StatusLargeText.Location = new System.Drawing.Point(240, 280);
 			this.StatusLargeText.MaxLength = 64;
 			this.StatusLargeText.Name = "StatusLargeText";
-			this.StatusLargeText.PlaceholderText = "Текст большой картинки";
-			this.StatusLargeText.Size = new System.Drawing.Size(256, 32);
+			this.StatusLargeText.PlaceholderText = "Текст большого изображения";
+			this.StatusLargeText.Size = new System.Drawing.Size(288, 32);
 			this.StatusLargeText.TabIndex = 16;
 			// 
 			// StatusSmallText
 			// 
 			this.StatusSmallText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
 			this.StatusSmallText.ForeColor = System.Drawing.Color.White;
-			this.StatusSmallText.Location = new System.Drawing.Point(272, 328);
+			this.StatusSmallText.Location = new System.Drawing.Point(240, 328);
 			this.StatusSmallText.MaxLength = 64;
 			this.StatusSmallText.Name = "StatusSmallText";
-			this.StatusSmallText.PlaceholderText = "Текст маленькой картинки";
-			this.StatusSmallText.Size = new System.Drawing.Size(256, 32);
+			this.StatusSmallText.PlaceholderText = "Текст маленького изображения";
+			this.StatusSmallText.Size = new System.Drawing.Size(288, 32);
 			this.StatusSmallText.TabIndex = 18;
 			// 
 			// StatusButton1Text
@@ -466,7 +466,7 @@
 			this.StatusCustomTime.Name = "StatusCustomTime";
 			this.StatusCustomTime.Size = new System.Drawing.Size(270, 32);
 			this.StatusCustomTime.TabIndex = 14;
-			this.StatusCustomTime.Value = new System.DateTime(1970, 1, 1, 0, 0, 0, 1);
+			this.StatusCustomTime.Value = new System.DateTime(2022, 12, 12, 12, 0, 0, 0);
 			// 
 			// StatusCustomTimeEnabled
 			// 
@@ -520,7 +520,7 @@
 			this.StatusLargeKey.Location = new System.Drawing.Point(16, 280);
 			this.StatusLargeKey.MaxLength = 128;
 			this.StatusLargeKey.Name = "StatusLargeKey";
-			this.StatusLargeKey.Size = new System.Drawing.Size(256, 32);
+			this.StatusLargeKey.Size = new System.Drawing.Size(224, 32);
 			this.StatusLargeKey.TabIndex = 15;
 			// 
 			// StatusSmallKey
@@ -531,7 +531,7 @@
 			this.StatusSmallKey.Location = new System.Drawing.Point(16, 328);
 			this.StatusSmallKey.MaxLength = 128;
 			this.StatusSmallKey.Name = "StatusSmallKey";
-			this.StatusSmallKey.Size = new System.Drawing.Size(256, 32);
+			this.StatusSmallKey.Size = new System.Drawing.Size(224, 32);
 			this.StatusSmallKey.TabIndex = 17;
 			// 
 			// ImageKeysUpdate
