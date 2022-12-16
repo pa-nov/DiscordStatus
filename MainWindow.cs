@@ -105,9 +105,9 @@ namespace DiscordStatus
 			{
 				return;
 			}
-			string IamgeKeysState = ImageKeysState.Text;
+			string imageKeysState = ImageKeysState.Text;
 			AppIDBox.Text = AppIDBox.Text.Trim();
-			ImageKeysState.Text = IamgeKeysState;
+			ImageKeysState.Text = imageKeysState;
 
 			RichPresence activity = new RichPresence();
 
