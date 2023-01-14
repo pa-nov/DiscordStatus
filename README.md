@@ -9,7 +9,7 @@
 
 Для установки Discord Status нужно:
 * Установить [`.NET Desktop Runtime 6.0`](https://dotnet.microsoft.com/download/dotnet/6.0)
-* Распаковать архив скаченный из [релизов](https://github.com/pa-nov/Discord-Status/releases) в любую папку
+* Распаковать архив скаченный из [релизов](https://github.com/pa-nov/Discord-Status/releases/latest) в любую папку
 
 ***
 
@@ -17,9 +17,9 @@
 
 Для работы программы необходим ID приложения.
 
-Вы можете взять [один из официальных ID приложений](https://github.com/pa-nov/Discord-Status/wiki/ID-официальных-приложений) или создать своё приложение.
+Вы можете взять [один из официальных ID приложений](https://github.com/pa-nov/Discord-Status/wiki/ID-официальных-приложений)
 
-Для этого:
+Или создать своё приложение, для этого:
 * Перейдите на [портал разработчиков Discord](https://discord.com/developers/applications) и авторизуйтесь
 * Нажмите на `New Application` в правом верхнем углу экрана
 * Укажите имя приложения (вы сможете поменять его позже)
