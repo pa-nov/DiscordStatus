@@ -9,7 +9,7 @@
 
 		<AssemblyName>Discord-Status</AssemblyName>
 		<AssemblyTitle>Discord Status</AssemblyTitle>
-		<Version>1.0.4</Version>
+		<Version>1.1.0</Version>
 		<Authors>PANOV</Authors>
 		<Configurations>Release</Configurations>
 		<ApplicationIcon>DiscordStatus.ico</ApplicationIcon>
