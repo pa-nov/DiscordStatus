@@ -249,14 +249,14 @@ namespace DiscordStatus
 
 				if (IsElapsed)
 				{
-					activity.Timestamps = new Timestamps
+					activity.Timestamps = new()
 					{
 						StartUnixMilliseconds = CustomTime
 					};
 				}
 				else
 				{
-					activity.Timestamps = new Timestamps
+					activity.Timestamps = new()
 					{
 						EndUnixMilliseconds = CustomTime
 					};
@@ -276,14 +276,14 @@ namespace DiscordStatus
 
 						if (IsElapsed)
 						{
-							activity.Timestamps = new Timestamps
+							activity.Timestamps = new()
 							{
 								StartUnixMilliseconds = (ulong)(Time - NewTime * 1000)
 							};
 						}
 						else
 						{
-							activity.Timestamps = new Timestamps
+							activity.Timestamps = new()
 							{
 								EndUnixMilliseconds = (ulong)(Time + NewTime * 1000)
 							};
@@ -300,22 +300,22 @@ namespace DiscordStatus
 
 			if (!String.IsNullOrWhiteSpace(StatusLargeKey.Text) && String.IsNullOrEmpty(StatusLargeKey.Tag.ToString()))
 			{
-				activity.Assets ??= new Assets();
+				activity.Assets ??= new();
 				activity.Assets.LargeImageKey = StatusLargeKey.Text;
 			}
 			if (NotEmpty(StatusLargeText))
 			{
-				activity.Assets ??= new Assets();
+				activity.Assets ??= new();
 				activity.Assets.LargeImageText = StatusLargeText.Text;
 			}
 			if (!String.IsNullOrWhiteSpace(StatusSmallKey.Text) && String.IsNullOrEmpty(StatusSmallKey.Tag.ToString()))
 			{
-				activity.Assets ??= new Assets();
+				activity.Assets ??= new();
 				activity.Assets.SmallImageKey = StatusSmallKey.Text;
 			}
 			if (NotEmpty(StatusSmallText))
 			{
-				activity.Assets ??= new Assets();
+				activity.Assets ??= new();
 				activity.Assets.SmallImageText = StatusSmallText.Text;
 			}
 
@@ -326,7 +326,7 @@ namespace DiscordStatus
 				if (Uri.TryCreate(StatusButton1Url.Text, UriKind.Absolute, out Uri? newUri))
 				{
 					StatusButton1Url.Text = newUri.ToString();
-					button1 = new DiscordRPC.Button()
+					button1 = new()
 					{
 						Label = StatusButton1Text.Text,
 						Url = StatusButton1Url.Text,
@@ -344,7 +344,7 @@ namespace DiscordStatus
 				if (Uri.TryCreate(StatusButton2Url.Text, UriKind.Absolute, out Uri? newUri))
 				{
 					StatusButton2Url.Text = newUri.ToString();
-					button2 = new DiscordRPC.Button()
+					button2 = new()
 					{
 						Label = StatusButton2Text.Text,
 						Url = StatusButton2Url.Text,
@@ -387,22 +387,22 @@ namespace DiscordStatus
 			}
 			if (NotEmpty(StatusPartyMatch))
 			{
-				activity.Secrets ??= new Secrets();
+				activity.Secrets ??= new();
 				activity.Secrets.MatchSecret = StatusPartyMatch.Text;
 			}
 			if (NotEmpty(StatusPartyJoin))
 			{
-				activity.Secrets ??= new Secrets();
+				activity.Secrets ??= new();
 				activity.Secrets.JoinSecret = StatusPartyJoin.Text;
 			}
 			if (NotEmpty(StatusPartySpectate))
 			{
-				activity.Secrets ??= new Secrets();
+				activity.Secrets ??= new();
 				activity.Secrets.SpectateSecret = StatusPartySpectate.Text;
 			}
 			if (NotEmpty(StatusPartyID))
 			{
-				activity.Party ??= new Party();
+				activity.Party ??= new();
 				activity.Party.ID = StatusPartyID.Text;
 
 				if (IsPublic)
@@ -484,20 +484,21 @@ namespace DiscordStatus
 				string assetsURL = "https://discordapp.com/api/oauth2/applications/" + AppIDBox.Text + "/assets";
 				HttpResponseMessage message = await httpClient.GetAsync(assetsURL);
 				message.EnsureSuccessStatusCode();
-				JArray assetsArray = JArray.Parse(await message.Content.ReadAsStringAsync());
+				JArray assets = JArray.Parse(await message.Content.ReadAsStringAsync());
 
-				if (assetsArray.Count > 0)
+				if (assets.Count > 0)
 				{
-					for (int i = 0; i < assetsArray.Count; i++)
+					for (int i = 0; i < assets.Count; i++)
 					{
-						StatusLargeKey.Items.Add(assetsArray[i]["name"]);
-						StatusSmallKey.Items.Add(assetsArray[i]["name"]);
+						var assetName = assets[i]["name"];
+						StatusLargeKey.Items.Add(assetName);
+						StatusSmallKey.Items.Add(assetName);
 					}
 
-					if (assetsArray.Count < 12)
+					if (assets.Count < 12)
 					{
-						StatusLargeKey.DropDownHeight = 2 + 24 * assetsArray.Count;
-						StatusSmallKey.DropDownHeight = 2 + 24 * assetsArray.Count;
+						StatusLargeKey.DropDownHeight = 2 + 24 * assets.Count;
+						StatusSmallKey.DropDownHeight = 2 + 24 * assets.Count;
 					}
 					else
 					{
