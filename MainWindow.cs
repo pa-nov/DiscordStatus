@@ -27,6 +27,8 @@ namespace DiscordStatus
             SettingsLoad(path);
         }
 
+        #region Обработка событий
+
         private void StatusStart_Click(object sender, EventArgs e) { StatusStartVoid(); }
         private void StatusStop_Click(object sender, EventArgs e) { StatusStopVoid(); }
         private void StatusUpdate_Click(object sender, EventArgs e) { StatusUpdateVoid(); }
@@ -46,7 +48,10 @@ namespace DiscordStatus
             this.Text = "Discord Status - " + (e.Name);
         }
 
-        // Цифровые поля
+        #endregion
+
+        #region Цифровые поля
+
         private void AppIDBox_TextChanged(object sender, EventArgs e)
         {
             TextToNumber((TextBox)sender, StringAppIDBox);
@@ -62,20 +67,29 @@ namespace DiscordStatus
         private void StatusMinutes_TextChanged(object sender, EventArgs e) { StringStatusMinutes = TextToInt((TextBox)sender, StringStatusMinutes); }
         private void StatusSeconds_TextChanged(object sender, EventArgs e) { StringStatusSeconds = TextToInt((TextBox)sender, StringStatusSeconds); }
 
-        // Placeholder у полей для ввода ключей изображений
+        #endregion
+
+        #region Заполнители у ключей изображений
+
         private void StatusLargeKey_Enter(object sender, EventArgs e) { PlaceholderEnter((ComboBox)sender); }
         private void StatusLargeKey_Leave(object sender, EventArgs e) { PlaceholderLeave((ComboBox)sender, "Ключ большого изображения"); }
         private void StatusSmallKey_Enter(object sender, EventArgs e) { PlaceholderEnter((ComboBox)sender); }
         private void StatusSmallKey_Leave(object sender, EventArgs e) { PlaceholderLeave((ComboBox)sender, "Ключ малого изображения"); }
 
-        // Кнопки переключатели
+        #endregion
+
+        #region Переключатели
+
         private void StatusElapsed_Click(object sender, EventArgs e) { SetIsElapsed(true); }
         private void StatusRemaining_Click(object sender, EventArgs e) { SetIsElapsed(false); }
         private void StatusPartyPrivacyPublic_Click(object sender, EventArgs e) { SetIsPublic(true); }
         private void StatusPartyPrivacyPrivate_Click(object sender, EventArgs e) { SetIsPublic(false); }
         private void StatusIsCustomTime_CheckedChanged(object sender, EventArgs e) { SetIsCustomTime(((CheckBox)sender).Checked); }
 
-        // Кнопки меню
+        #endregion
+
+        #region Кнопки меню
+
         private void MenuSave_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new()
@@ -110,7 +124,10 @@ namespace DiscordStatus
             Process.Start(new ProcessStartInfo("https://github.com/pa-nov/Discord-Status/wiki") { UseShellExecute = true });
         }
 
-        // Обработка закрытия программы
+        #endregion
+
+        #region Закрытие программы
+
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
@@ -140,7 +157,10 @@ namespace DiscordStatus
         private void NotifyExit_Click(object sender, EventArgs e) { Application.Exit(); }
         private void MenuExit_Click(object sender, EventArgs e) { Application.Exit(); }
 
-        // Перетаскивание файлов в программу
+        #endregion
+
+        #region Открытия файла перетаскиванием
+
         private void MainWindow_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data != null && e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -157,6 +177,9 @@ namespace DiscordStatus
             }
         }
 
+        #endregion
+
+        #region Основные функции
 
         private void StatusStartVoid()
         {
@@ -428,6 +451,10 @@ namespace DiscordStatus
             }
         }
 
+        #endregion
+
+        #region Функции переключателей
+
         private void SetIsElapsed(bool NewValue)
         {
             IsElapsed = NewValue;
@@ -519,6 +546,9 @@ namespace DiscordStatus
             }
         }
 
+        #endregion
+
+        #region Сохранение и загрузка
 
         private void SettingsSave(string path)
         {
@@ -603,6 +633,9 @@ namespace DiscordStatus
             PlaceholderLeave(StatusSmallKey, "Ключ малого изображения");
         }
 
+        #endregion
+
+        #region Функции
 
         private static bool NotEmpty(TextBox textBox)
         {
@@ -703,6 +736,8 @@ namespace DiscordStatus
                 comboBox.Tag = "";
             }
         }
+
+        #endregion
     }
 
     public class StatusSettings
