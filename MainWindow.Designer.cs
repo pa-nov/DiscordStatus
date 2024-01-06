@@ -14,647 +14,647 @@ namespace DiscordStatus
             }
             base.Dispose(disposing);
         }
-        
+
         #region Windows Form Designer generated code
-        
+
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AppIDBox = new System.Windows.Forms.TextBox();
-            this.StatusStart = new System.Windows.Forms.Button();
-            this.StatusDetails = new System.Windows.Forms.TextBox();
-            this.StatusState = new System.Windows.Forms.TextBox();
-            this.StatusPartyMin = new System.Windows.Forms.TextBox();
-            this.PartyOfText = new System.Windows.Forms.Label();
-            this.StatusPartyMax = new System.Windows.Forms.TextBox();
-            this.TimerUpdate = new System.Windows.Forms.Timer(this.components);
-            this.StatusUpdate = new System.Windows.Forms.Button();
-            this.StatusElapsed = new System.Windows.Forms.Button();
-            this.StatusRemaining = new System.Windows.Forms.Button();
-            this.StatusHours = new System.Windows.Forms.TextBox();
-            this.StatusMinutes = new System.Windows.Forms.TextBox();
-            this.StatusSeconds = new System.Windows.Forms.TextBox();
-            this.StatusLargeText = new System.Windows.Forms.TextBox();
-            this.StatusSmallText = new System.Windows.Forms.TextBox();
-            this.StatusButton1Text = new System.Windows.Forms.TextBox();
-            this.StatusButton1Url = new System.Windows.Forms.TextBox();
-            this.StatusButton2Text = new System.Windows.Forms.TextBox();
-            this.StatusButton2Url = new System.Windows.Forms.TextBox();
-            this.StatusStop = new System.Windows.Forms.Button();
-            this.Menu = new System.Windows.Forms.MenuStrip();
-            this.MenuLoad = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuSave = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuClear = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuOpenGitHub = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.StatusPartyID = new System.Windows.Forms.TextBox();
-            this.StatusPartyMatch = new System.Windows.Forms.TextBox();
-            this.StatusPartyJoin = new System.Windows.Forms.TextBox();
-            this.StatusPartySpectate = new System.Windows.Forms.TextBox();
-            this.StatusPartyPrivacyText = new System.Windows.Forms.Label();
-            this.StatusPartyPrivacyPublic = new System.Windows.Forms.Button();
-            this.StatusPartyPrivacyPrivate = new System.Windows.Forms.Button();
-            this.NotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.NotifyMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.NotifyOpen = new System.Windows.Forms.ToolStripMenuItem();
-            this.NotifyExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.StatusCustomTime = new System.Windows.Forms.DateTimePicker();
-            this.StatusIsCustomTime = new System.Windows.Forms.CheckBox();
-            this.Status = new System.Windows.Forms.StatusStrip();
-            this.ImageKeysState = new System.Windows.Forms.ToolStripStatusLabel();
-            this.ApplicationState = new System.Windows.Forms.ToolStripStatusLabel();
-            this.StatusLargeKey = new System.Windows.Forms.ComboBox();
-            this.StatusSmallKey = new System.Windows.Forms.ComboBox();
-            this.ImageKeysUpdate = new System.Windows.Forms.Button();
-            this.Menu.SuspendLayout();
-            this.NotifyMenu.SuspendLayout();
-            this.Status.SuspendLayout();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            AppIDBox = new TextBox();
+            StatusStart = new Button();
+            StatusDetails = new TextBox();
+            StatusState = new TextBox();
+            StatusPartyMin = new TextBox();
+            PartyOfText = new Label();
+            StatusPartyMax = new TextBox();
+            TimerUpdate = new System.Windows.Forms.Timer(components);
+            StatusUpdate = new Button();
+            StatusElapsed = new Button();
+            StatusRemaining = new Button();
+            StatusHours = new TextBox();
+            StatusMinutes = new TextBox();
+            StatusSeconds = new TextBox();
+            StatusLargeText = new TextBox();
+            StatusSmallText = new TextBox();
+            StatusButton1Text = new TextBox();
+            StatusButton1Url = new TextBox();
+            StatusButton2Text = new TextBox();
+            StatusButton2Url = new TextBox();
+            StatusStop = new Button();
+            Menu = new MenuStrip();
+            MenuLoad = new ToolStripMenuItem();
+            MenuSave = new ToolStripMenuItem();
+            MenuClear = new ToolStripMenuItem();
+            MenuOpenGitHub = new ToolStripMenuItem();
+            MenuExit = new ToolStripMenuItem();
+            StatusPartyID = new TextBox();
+            StatusPartyMatch = new TextBox();
+            StatusPartyJoin = new TextBox();
+            StatusPartySpectate = new TextBox();
+            StatusPartyPrivacyText = new Label();
+            StatusPartyPrivacyPublic = new Button();
+            StatusPartyPrivacyPrivate = new Button();
+            NotifyIcon = new NotifyIcon(components);
+            NotifyMenu = new ContextMenuStrip(components);
+            NotifyOpen = new ToolStripMenuItem();
+            NotifyExit = new ToolStripMenuItem();
+            StatusCustomTime = new DateTimePicker();
+            StatusIsCustomTime = new CheckBox();
+            Status = new StatusStrip();
+            ImageKeysState = new ToolStripStatusLabel();
+            ApplicationState = new ToolStripStatusLabel();
+            StatusLargeKey = new ComboBox();
+            StatusSmallKey = new ComboBox();
+            ImageKeysUpdate = new Button();
+            Menu.SuspendLayout();
+            NotifyMenu.SuspendLayout();
+            Status.SuspendLayout();
+            SuspendLayout();
             // 
             // AppIDBox
             // 
-            this.AppIDBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.AppIDBox.ForeColor = System.Drawing.Color.White;
-            this.AppIDBox.Location = new System.Drawing.Point(16, 40);
-            this.AppIDBox.MaxLength = 19;
-            this.AppIDBox.Name = "AppIDBox";
-            this.AppIDBox.PlaceholderText = "ID Приложения";
-            this.AppIDBox.Size = new System.Drawing.Size(234, 32);
-            this.AppIDBox.TabIndex = 1;
-            this.AppIDBox.TextChanged += new System.EventHandler(this.AppIDBox_TextChanged);
+            AppIDBox.BackColor = Color.FromArgb(64, 68, 75);
+            AppIDBox.ForeColor = Color.White;
+            AppIDBox.Location = new Point(16, 40);
+            AppIDBox.MaxLength = 19;
+            AppIDBox.Name = "AppIDBox";
+            AppIDBox.PlaceholderText = "ID Приложения";
+            AppIDBox.Size = new Size(234, 32);
+            AppIDBox.TabIndex = 1;
+            AppIDBox.TextChanged += AppIDBox_TextChanged;
             // 
             // StatusStart
             // 
-            this.StatusStart.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.StatusStart.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.StatusStart.ForeColor = System.Drawing.Color.Black;
-            this.StatusStart.Location = new System.Drawing.Point(258, 40);
-            this.StatusStart.Name = "StatusStart";
-            this.StatusStart.Size = new System.Drawing.Size(135, 32);
-            this.StatusStart.TabIndex = 2;
-            this.StatusStart.Text = "Запустить";
-            this.StatusStart.UseVisualStyleBackColor = true;
-            this.StatusStart.Click += new System.EventHandler(this.StatusStart_Click);
+            StatusStart.FlatStyle = FlatStyle.System;
+            StatusStart.Font = new Font("Arial", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            StatusStart.ForeColor = Color.Black;
+            StatusStart.Location = new Point(258, 40);
+            StatusStart.Name = "StatusStart";
+            StatusStart.Size = new Size(135, 32);
+            StatusStart.TabIndex = 2;
+            StatusStart.Text = "Запустить";
+            StatusStart.UseVisualStyleBackColor = true;
+            StatusStart.Click += (s, e) => { StatusStartVoid(); };
             // 
             // StatusDetails
             // 
-            this.StatusDetails.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.StatusDetails.ForeColor = System.Drawing.Color.White;
-            this.StatusDetails.Location = new System.Drawing.Point(16, 88);
-            this.StatusDetails.MaxLength = 64;
-            this.StatusDetails.Name = "StatusDetails";
-            this.StatusDetails.PlaceholderText = "Детали";
-            this.StatusDetails.Size = new System.Drawing.Size(512, 32);
-            this.StatusDetails.TabIndex = 4;
+            StatusDetails.BackColor = Color.FromArgb(64, 68, 75);
+            StatusDetails.ForeColor = Color.White;
+            StatusDetails.Location = new Point(16, 88);
+            StatusDetails.MaxLength = 64;
+            StatusDetails.Name = "StatusDetails";
+            StatusDetails.PlaceholderText = "Детали";
+            StatusDetails.Size = new Size(512, 32);
+            StatusDetails.TabIndex = 4;
             // 
             // StatusState
             // 
-            this.StatusState.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.StatusState.ForeColor = System.Drawing.Color.White;
-            this.StatusState.Location = new System.Drawing.Point(16, 128);
-            this.StatusState.MaxLength = 64;
-            this.StatusState.Name = "StatusState";
-            this.StatusState.PlaceholderText = "Состояние";
-            this.StatusState.Size = new System.Drawing.Size(360, 32);
-            this.StatusState.TabIndex = 5;
+            StatusState.BackColor = Color.FromArgb(64, 68, 75);
+            StatusState.ForeColor = Color.White;
+            StatusState.Location = new Point(16, 128);
+            StatusState.MaxLength = 64;
+            StatusState.Name = "StatusState";
+            StatusState.PlaceholderText = "Состояние";
+            StatusState.Size = new Size(360, 32);
+            StatusState.TabIndex = 5;
             // 
             // StatusPartyMin
             // 
-            this.StatusPartyMin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.StatusPartyMin.ForeColor = System.Drawing.Color.White;
-            this.StatusPartyMin.Location = new System.Drawing.Point(384, 128);
-            this.StatusPartyMin.MaxLength = 10;
-            this.StatusPartyMin.Name = "StatusPartyMin";
-            this.StatusPartyMin.PlaceholderText = "мин";
-            this.StatusPartyMin.Size = new System.Drawing.Size(56, 32);
-            this.StatusPartyMin.TabIndex = 6;
-            this.StatusPartyMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.StatusPartyMin.TextChanged += new System.EventHandler(this.StatusPartyMin_TextChanged);
+            StatusPartyMin.BackColor = Color.FromArgb(64, 68, 75);
+            StatusPartyMin.ForeColor = Color.White;
+            StatusPartyMin.Location = new Point(384, 128);
+            StatusPartyMin.MaxLength = 10;
+            StatusPartyMin.Name = "StatusPartyMin";
+            StatusPartyMin.PlaceholderText = "мин";
+            StatusPartyMin.Size = new Size(56, 32);
+            StatusPartyMin.TabIndex = 6;
+            StatusPartyMin.TextAlign = HorizontalAlignment.Center;
+            StatusPartyMin.TextChanged += StatusPartyMin_TextChanged;
             // 
             // PartyOfText
             // 
-            this.PartyOfText.AutoSize = true;
-            this.PartyOfText.ForeColor = System.Drawing.Color.White;
-            this.PartyOfText.Location = new System.Drawing.Point(439, 132);
-            this.PartyOfText.Name = "PartyOfText";
-            this.PartyOfText.Size = new System.Drawing.Size(34, 25);
-            this.PartyOfText.TabIndex = 0;
-            this.PartyOfText.Text = "из";
-            this.PartyOfText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            PartyOfText.AutoSize = true;
+            PartyOfText.ForeColor = Color.White;
+            PartyOfText.Location = new Point(439, 132);
+            PartyOfText.Name = "PartyOfText";
+            PartyOfText.Size = new Size(34, 25);
+            PartyOfText.TabIndex = 0;
+            PartyOfText.Text = "из";
+            PartyOfText.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // StatusPartyMax
             // 
-            this.StatusPartyMax.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.StatusPartyMax.ForeColor = System.Drawing.Color.White;
-            this.StatusPartyMax.Location = new System.Drawing.Point(472, 128);
-            this.StatusPartyMax.MaxLength = 10;
-            this.StatusPartyMax.Name = "StatusPartyMax";
-            this.StatusPartyMax.PlaceholderText = "макс";
-            this.StatusPartyMax.Size = new System.Drawing.Size(56, 32);
-            this.StatusPartyMax.TabIndex = 7;
-            this.StatusPartyMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.StatusPartyMax.TextChanged += new System.EventHandler(this.StatusPartyMax_TextChanged);
+            StatusPartyMax.BackColor = Color.FromArgb(64, 68, 75);
+            StatusPartyMax.ForeColor = Color.White;
+            StatusPartyMax.Location = new Point(472, 128);
+            StatusPartyMax.MaxLength = 10;
+            StatusPartyMax.Name = "StatusPartyMax";
+            StatusPartyMax.PlaceholderText = "макс";
+            StatusPartyMax.Size = new Size(56, 32);
+            StatusPartyMax.TabIndex = 7;
+            StatusPartyMax.TextAlign = HorizontalAlignment.Center;
+            StatusPartyMax.TextChanged += StatusPartyMax_TextChanged;
             // 
             // TimerUpdate
             // 
-            this.TimerUpdate.Enabled = true;
-            this.TimerUpdate.Tick += new System.EventHandler(this.TimerUpdate_Tick);
+            TimerUpdate.Enabled = true;
+            TimerUpdate.Tick += (s, e) => { TickVoid(); };
             // 
             // StatusUpdate
             // 
-            this.StatusUpdate.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.StatusUpdate.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.StatusUpdate.ForeColor = System.Drawing.Color.Black;
-            this.StatusUpdate.Location = new System.Drawing.Point(336, 568);
-            this.StatusUpdate.Name = "StatusUpdate";
-            this.StatusUpdate.Size = new System.Drawing.Size(192, 48);
-            this.StatusUpdate.TabIndex = 30;
-            this.StatusUpdate.Text = "Обновить";
-            this.StatusUpdate.UseVisualStyleBackColor = true;
-            this.StatusUpdate.Click += new System.EventHandler(this.StatusUpdate_Click);
+            StatusUpdate.FlatStyle = FlatStyle.System;
+            StatusUpdate.Font = new Font("Arial", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            StatusUpdate.ForeColor = Color.Black;
+            StatusUpdate.Location = new Point(336, 568);
+            StatusUpdate.Name = "StatusUpdate";
+            StatusUpdate.Size = new Size(192, 48);
+            StatusUpdate.TabIndex = 30;
+            StatusUpdate.Text = "Обновить";
+            StatusUpdate.UseVisualStyleBackColor = true;
+            StatusUpdate.Click += (s, e) => { StatusUpdateVoid(); };
             // 
             // StatusElapsed
             // 
-            this.StatusElapsed.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.StatusElapsed.ForeColor = System.Drawing.Color.Black;
-            this.StatusElapsed.Location = new System.Drawing.Point(16, 176);
-            this.StatusElapsed.Name = "StatusElapsed";
-            this.StatusElapsed.Size = new System.Drawing.Size(117, 32);
-            this.StatusElapsed.TabIndex = 8;
-            this.StatusElapsed.Text = "Прошло";
-            this.StatusElapsed.UseVisualStyleBackColor = true;
-            this.StatusElapsed.Click += new System.EventHandler(this.StatusElapsed_Click);
+            StatusElapsed.Font = new Font("Arial", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            StatusElapsed.ForeColor = Color.Black;
+            StatusElapsed.Location = new Point(16, 176);
+            StatusElapsed.Name = "StatusElapsed";
+            StatusElapsed.Size = new Size(117, 32);
+            StatusElapsed.TabIndex = 8;
+            StatusElapsed.Text = "Прошло";
+            StatusElapsed.UseVisualStyleBackColor = true;
+            StatusElapsed.Click += (s, e) => { SetIsElapsed(true); };
             // 
             // StatusRemaining
             // 
-            this.StatusRemaining.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.StatusRemaining.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.StatusRemaining.ForeColor = System.Drawing.Color.White;
-            this.StatusRemaining.Location = new System.Drawing.Point(133, 176);
-            this.StatusRemaining.Name = "StatusRemaining";
-            this.StatusRemaining.Size = new System.Drawing.Size(117, 32);
-            this.StatusRemaining.TabIndex = 9;
-            this.StatusRemaining.Text = "Осталось";
-            this.StatusRemaining.UseVisualStyleBackColor = false;
-            this.StatusRemaining.Click += new System.EventHandler(this.StatusRemaining_Click);
+            StatusRemaining.BackColor = Color.FromArgb(64, 68, 75);
+            StatusRemaining.Font = new Font("Arial", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            StatusRemaining.ForeColor = Color.White;
+            StatusRemaining.Location = new Point(133, 176);
+            StatusRemaining.Name = "StatusRemaining";
+            StatusRemaining.Size = new Size(117, 32);
+            StatusRemaining.TabIndex = 9;
+            StatusRemaining.Text = "Осталось";
+            StatusRemaining.UseVisualStyleBackColor = false;
+            StatusRemaining.Click += (s, e) => { SetIsElapsed(false); };
             // 
             // StatusHours
             // 
-            this.StatusHours.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.StatusHours.ForeColor = System.Drawing.Color.White;
-            this.StatusHours.Location = new System.Drawing.Point(258, 176);
-            this.StatusHours.MaxLength = 5;
-            this.StatusHours.Name = "StatusHours";
-            this.StatusHours.PlaceholderText = "Часы";
-            this.StatusHours.Size = new System.Drawing.Size(90, 32);
-            this.StatusHours.TabIndex = 11;
-            this.StatusHours.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.StatusHours.TextChanged += new System.EventHandler(this.StatusHours_TextChanged);
+            StatusHours.BackColor = Color.FromArgb(64, 68, 75);
+            StatusHours.ForeColor = Color.White;
+            StatusHours.Location = new Point(258, 176);
+            StatusHours.MaxLength = 5;
+            StatusHours.Name = "StatusHours";
+            StatusHours.PlaceholderText = "Часы";
+            StatusHours.Size = new Size(90, 32);
+            StatusHours.TabIndex = 11;
+            StatusHours.TextAlign = HorizontalAlignment.Center;
+            StatusHours.TextChanged += StatusHours_TextChanged;
             // 
             // StatusMinutes
             // 
-            this.StatusMinutes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.StatusMinutes.ForeColor = System.Drawing.Color.White;
-            this.StatusMinutes.Location = new System.Drawing.Point(348, 176);
-            this.StatusMinutes.MaxLength = 5;
-            this.StatusMinutes.Name = "StatusMinutes";
-            this.StatusMinutes.PlaceholderText = "Мин.";
-            this.StatusMinutes.Size = new System.Drawing.Size(90, 32);
-            this.StatusMinutes.TabIndex = 12;
-            this.StatusMinutes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.StatusMinutes.TextChanged += new System.EventHandler(this.StatusMinutes_TextChanged);
+            StatusMinutes.BackColor = Color.FromArgb(64, 68, 75);
+            StatusMinutes.ForeColor = Color.White;
+            StatusMinutes.Location = new Point(348, 176);
+            StatusMinutes.MaxLength = 5;
+            StatusMinutes.Name = "StatusMinutes";
+            StatusMinutes.PlaceholderText = "Мин.";
+            StatusMinutes.Size = new Size(90, 32);
+            StatusMinutes.TabIndex = 12;
+            StatusMinutes.TextAlign = HorizontalAlignment.Center;
+            StatusMinutes.TextChanged += StatusMinutes_TextChanged;
             // 
             // StatusSeconds
             // 
-            this.StatusSeconds.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.StatusSeconds.ForeColor = System.Drawing.Color.White;
-            this.StatusSeconds.Location = new System.Drawing.Point(438, 176);
-            this.StatusSeconds.MaxLength = 5;
-            this.StatusSeconds.Name = "StatusSeconds";
-            this.StatusSeconds.PlaceholderText = "Сек.";
-            this.StatusSeconds.Size = new System.Drawing.Size(90, 32);
-            this.StatusSeconds.TabIndex = 13;
-            this.StatusSeconds.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.StatusSeconds.TextChanged += new System.EventHandler(this.StatusSeconds_TextChanged);
+            StatusSeconds.BackColor = Color.FromArgb(64, 68, 75);
+            StatusSeconds.ForeColor = Color.White;
+            StatusSeconds.Location = new Point(438, 176);
+            StatusSeconds.MaxLength = 5;
+            StatusSeconds.Name = "StatusSeconds";
+            StatusSeconds.PlaceholderText = "Сек.";
+            StatusSeconds.Size = new Size(90, 32);
+            StatusSeconds.TabIndex = 13;
+            StatusSeconds.TextAlign = HorizontalAlignment.Center;
+            StatusSeconds.TextChanged += StatusSeconds_TextChanged;
             // 
             // StatusLargeText
             // 
-            this.StatusLargeText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.StatusLargeText.ForeColor = System.Drawing.Color.White;
-            this.StatusLargeText.Location = new System.Drawing.Point(258, 264);
-            this.StatusLargeText.MaxLength = 64;
-            this.StatusLargeText.Name = "StatusLargeText";
-            this.StatusLargeText.PlaceholderText = "Текст большого изображения";
-            this.StatusLargeText.Size = new System.Drawing.Size(270, 32);
-            this.StatusLargeText.TabIndex = 16;
+            StatusLargeText.BackColor = Color.FromArgb(64, 68, 75);
+            StatusLargeText.ForeColor = Color.White;
+            StatusLargeText.Location = new Point(258, 264);
+            StatusLargeText.MaxLength = 64;
+            StatusLargeText.Name = "StatusLargeText";
+            StatusLargeText.PlaceholderText = "Текст большого изображения";
+            StatusLargeText.Size = new Size(270, 32);
+            StatusLargeText.TabIndex = 16;
             // 
             // StatusSmallText
             // 
-            this.StatusSmallText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.StatusSmallText.ForeColor = System.Drawing.Color.White;
-            this.StatusSmallText.Location = new System.Drawing.Point(258, 304);
-            this.StatusSmallText.MaxLength = 64;
-            this.StatusSmallText.Name = "StatusSmallText";
-            this.StatusSmallText.PlaceholderText = "Текст малого изображения";
-            this.StatusSmallText.Size = new System.Drawing.Size(270, 32);
-            this.StatusSmallText.TabIndex = 18;
+            StatusSmallText.BackColor = Color.FromArgb(64, 68, 75);
+            StatusSmallText.ForeColor = Color.White;
+            StatusSmallText.Location = new Point(258, 304);
+            StatusSmallText.MaxLength = 64;
+            StatusSmallText.Name = "StatusSmallText";
+            StatusSmallText.PlaceholderText = "Текст малого изображения";
+            StatusSmallText.Size = new Size(270, 32);
+            StatusSmallText.TabIndex = 18;
             // 
             // StatusButton1Text
             // 
-            this.StatusButton1Text.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.StatusButton1Text.ForeColor = System.Drawing.Color.White;
-            this.StatusButton1Text.Location = new System.Drawing.Point(16, 352);
-            this.StatusButton1Text.MaxLength = 16;
-            this.StatusButton1Text.Name = "StatusButton1Text";
-            this.StatusButton1Text.PlaceholderText = "Название";
-            this.StatusButton1Text.Size = new System.Drawing.Size(128, 32);
-            this.StatusButton1Text.TabIndex = 19;
+            StatusButton1Text.BackColor = Color.FromArgb(64, 68, 75);
+            StatusButton1Text.ForeColor = Color.White;
+            StatusButton1Text.Location = new Point(16, 352);
+            StatusButton1Text.MaxLength = 16;
+            StatusButton1Text.Name = "StatusButton1Text";
+            StatusButton1Text.PlaceholderText = "Название";
+            StatusButton1Text.Size = new Size(128, 32);
+            StatusButton1Text.TabIndex = 19;
             // 
             // StatusButton1Url
             // 
-            this.StatusButton1Url.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.StatusButton1Url.ForeColor = System.Drawing.Color.White;
-            this.StatusButton1Url.Location = new System.Drawing.Point(144, 352);
-            this.StatusButton1Url.MaxLength = 256;
-            this.StatusButton1Url.Name = "StatusButton1Url";
-            this.StatusButton1Url.PlaceholderText = "Ссылка первой кнопки";
-            this.StatusButton1Url.Size = new System.Drawing.Size(384, 32);
-            this.StatusButton1Url.TabIndex = 20;
+            StatusButton1Url.BackColor = Color.FromArgb(64, 68, 75);
+            StatusButton1Url.ForeColor = Color.White;
+            StatusButton1Url.Location = new Point(144, 352);
+            StatusButton1Url.MaxLength = 256;
+            StatusButton1Url.Name = "StatusButton1Url";
+            StatusButton1Url.PlaceholderText = "Ссылка первой кнопки";
+            StatusButton1Url.Size = new Size(384, 32);
+            StatusButton1Url.TabIndex = 20;
             // 
             // StatusButton2Text
             // 
-            this.StatusButton2Text.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.StatusButton2Text.ForeColor = System.Drawing.Color.White;
-            this.StatusButton2Text.Location = new System.Drawing.Point(16, 392);
-            this.StatusButton2Text.MaxLength = 16;
-            this.StatusButton2Text.Name = "StatusButton2Text";
-            this.StatusButton2Text.PlaceholderText = "Название";
-            this.StatusButton2Text.Size = new System.Drawing.Size(128, 32);
-            this.StatusButton2Text.TabIndex = 21;
+            StatusButton2Text.BackColor = Color.FromArgb(64, 68, 75);
+            StatusButton2Text.ForeColor = Color.White;
+            StatusButton2Text.Location = new Point(16, 392);
+            StatusButton2Text.MaxLength = 16;
+            StatusButton2Text.Name = "StatusButton2Text";
+            StatusButton2Text.PlaceholderText = "Название";
+            StatusButton2Text.Size = new Size(128, 32);
+            StatusButton2Text.TabIndex = 21;
             // 
             // StatusButton2Url
             // 
-            this.StatusButton2Url.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.StatusButton2Url.ForeColor = System.Drawing.Color.White;
-            this.StatusButton2Url.Location = new System.Drawing.Point(144, 392);
-            this.StatusButton2Url.MaxLength = 256;
-            this.StatusButton2Url.Name = "StatusButton2Url";
-            this.StatusButton2Url.PlaceholderText = "Ссылка второй кнопки";
-            this.StatusButton2Url.Size = new System.Drawing.Size(384, 32);
-            this.StatusButton2Url.TabIndex = 22;
+            StatusButton2Url.BackColor = Color.FromArgb(64, 68, 75);
+            StatusButton2Url.ForeColor = Color.White;
+            StatusButton2Url.Location = new Point(144, 392);
+            StatusButton2Url.MaxLength = 256;
+            StatusButton2Url.Name = "StatusButton2Url";
+            StatusButton2Url.PlaceholderText = "Ссылка второй кнопки";
+            StatusButton2Url.Size = new Size(384, 32);
+            StatusButton2Url.TabIndex = 22;
             // 
             // StatusStop
             // 
-            this.StatusStop.Enabled = false;
-            this.StatusStop.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.StatusStop.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.StatusStop.ForeColor = System.Drawing.Color.Black;
-            this.StatusStop.Location = new System.Drawing.Point(393, 40);
-            this.StatusStop.Name = "StatusStop";
-            this.StatusStop.Size = new System.Drawing.Size(135, 32);
-            this.StatusStop.TabIndex = 3;
-            this.StatusStop.Text = "Остановить";
-            this.StatusStop.UseVisualStyleBackColor = true;
-            this.StatusStop.Click += new System.EventHandler(this.StatusStop_Click);
+            StatusStop.Enabled = false;
+            StatusStop.FlatStyle = FlatStyle.System;
+            StatusStop.Font = new Font("Arial", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            StatusStop.ForeColor = Color.Black;
+            StatusStop.Location = new Point(393, 40);
+            StatusStop.Name = "StatusStop";
+            StatusStop.Size = new Size(135, 32);
+            StatusStop.TabIndex = 3;
+            StatusStop.Text = "Остановить";
+            StatusStop.UseVisualStyleBackColor = true;
+            StatusStop.Click += (s, e) => { StatusStopVoid(); };
             // 
             // Menu
             // 
-            this.Menu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
-            this.Menu.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.MenuLoad, this.MenuSave, this.MenuClear, this.MenuOpenGitHub, this.MenuExit });
-            this.Menu.Location = new System.Drawing.Point(0, 0);
-            this.Menu.Name = "Menu";
-            this.Menu.Size = new System.Drawing.Size(544, 24);
-            this.Menu.TabIndex = 0;
-            this.Menu.Text = "Меню";
+            Menu.BackColor = Color.FromArgb(47, 49, 54);
+            Menu.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            Menu.Items.AddRange(new ToolStripItem[] { MenuLoad, MenuSave, MenuClear, MenuOpenGitHub, MenuExit });
+            Menu.Location = new Point(0, 0);
+            Menu.Name = "Menu";
+            Menu.Size = new Size(544, 24);
+            Menu.TabIndex = 0;
+            Menu.Text = "Меню";
             // 
             // MenuLoad
             // 
-            this.MenuLoad.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.MenuLoad.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.MenuLoad.ForeColor = System.Drawing.Color.White;
-            this.MenuLoad.Name = "MenuLoad";
-            this.MenuLoad.Size = new System.Drawing.Size(68, 20);
-            this.MenuLoad.Text = "Открыть";
-            this.MenuLoad.Click += new System.EventHandler(this.MenuLoad_Click);
+            MenuLoad.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            MenuLoad.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            MenuLoad.ForeColor = Color.White;
+            MenuLoad.Name = "MenuLoad";
+            MenuLoad.Size = new Size(68, 20);
+            MenuLoad.Text = "Открыть";
+            MenuLoad.Click += MenuLoad_Click;
             // 
             // MenuSave
             // 
-            this.MenuSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
-            this.MenuSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.MenuSave.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.MenuSave.ForeColor = System.Drawing.Color.White;
-            this.MenuSave.Name = "MenuSave";
-            this.MenuSave.Size = new System.Drawing.Size(81, 20);
-            this.MenuSave.Text = "Сохранить";
-            this.MenuSave.Click += new System.EventHandler(this.MenuSave_Click);
+            MenuSave.BackColor = Color.FromArgb(47, 49, 54);
+            MenuSave.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            MenuSave.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            MenuSave.ForeColor = Color.White;
+            MenuSave.Name = "MenuSave";
+            MenuSave.Size = new Size(81, 20);
+            MenuSave.Text = "Сохранить";
+            MenuSave.Click += MenuSave_Click;
             // 
             // MenuClear
             // 
-            this.MenuClear.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.MenuClear.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.MenuClear.ForeColor = System.Drawing.Color.White;
-            this.MenuClear.Name = "MenuClear";
-            this.MenuClear.Size = new System.Drawing.Size(73, 20);
-            this.MenuClear.Text = "Очистить";
-            this.MenuClear.Click += new System.EventHandler(this.MenuClear_Click);
+            MenuClear.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            MenuClear.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            MenuClear.ForeColor = Color.White;
+            MenuClear.Name = "MenuClear";
+            MenuClear.Size = new Size(73, 20);
+            MenuClear.Text = "Очистить";
+            MenuClear.Click += MenuClear_Click;
             // 
             // MenuOpenGitHub
             // 
-            this.MenuOpenGitHub.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.MenuOpenGitHub.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.MenuOpenGitHub.ForeColor = System.Drawing.Color.White;
-            this.MenuOpenGitHub.Name = "MenuOpenGitHub";
-            this.MenuOpenGitHub.Size = new System.Drawing.Size(66, 20);
-            this.MenuOpenGitHub.Text = "Помощь";
-            this.MenuOpenGitHub.Click += new System.EventHandler(this.MenuOpenGitHub_Click);
+            MenuOpenGitHub.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            MenuOpenGitHub.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            MenuOpenGitHub.ForeColor = Color.White;
+            MenuOpenGitHub.Name = "MenuOpenGitHub";
+            MenuOpenGitHub.Size = new Size(66, 20);
+            MenuOpenGitHub.Text = "Помощь";
+            MenuOpenGitHub.Click += MenuOpenGitHub_Click;
             // 
             // MenuExit
             // 
-            this.MenuExit.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.MenuExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.MenuExit.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.MenuExit.ForeColor = System.Drawing.Color.White;
-            this.MenuExit.Name = "MenuExit";
-            this.MenuExit.Size = new System.Drawing.Size(56, 20);
-            this.MenuExit.Text = "Выйти";
-            this.MenuExit.Click += new System.EventHandler(this.MenuExit_Click);
+            MenuExit.Alignment = ToolStripItemAlignment.Right;
+            MenuExit.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            MenuExit.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            MenuExit.ForeColor = Color.White;
+            MenuExit.Name = "MenuExit";
+            MenuExit.Size = new Size(56, 20);
+            MenuExit.Text = "Выйти";
+            MenuExit.Click += MenuExit_Click;
             // 
             // StatusPartyID
             // 
-            this.StatusPartyID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.StatusPartyID.ForeColor = System.Drawing.Color.White;
-            this.StatusPartyID.Location = new System.Drawing.Point(16, 440);
-            this.StatusPartyID.MaxLength = 64;
-            this.StatusPartyID.Name = "StatusPartyID";
-            this.StatusPartyID.PlaceholderText = "ID Группы";
-            this.StatusPartyID.Size = new System.Drawing.Size(252, 32);
-            this.StatusPartyID.TabIndex = 23;
+            StatusPartyID.BackColor = Color.FromArgb(64, 68, 75);
+            StatusPartyID.ForeColor = Color.White;
+            StatusPartyID.Location = new Point(16, 440);
+            StatusPartyID.MaxLength = 64;
+            StatusPartyID.Name = "StatusPartyID";
+            StatusPartyID.PlaceholderText = "ID Группы";
+            StatusPartyID.Size = new Size(252, 32);
+            StatusPartyID.TabIndex = 23;
             // 
             // StatusPartyMatch
             // 
-            this.StatusPartyMatch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.StatusPartyMatch.ForeColor = System.Drawing.Color.White;
-            this.StatusPartyMatch.Location = new System.Drawing.Point(276, 440);
-            this.StatusPartyMatch.MaxLength = 64;
-            this.StatusPartyMatch.Name = "StatusPartyMatch";
-            this.StatusPartyMatch.PlaceholderText = "Хэш матча";
-            this.StatusPartyMatch.Size = new System.Drawing.Size(252, 32);
-            this.StatusPartyMatch.TabIndex = 24;
+            StatusPartyMatch.BackColor = Color.FromArgb(64, 68, 75);
+            StatusPartyMatch.ForeColor = Color.White;
+            StatusPartyMatch.Location = new Point(276, 440);
+            StatusPartyMatch.MaxLength = 64;
+            StatusPartyMatch.Name = "StatusPartyMatch";
+            StatusPartyMatch.PlaceholderText = "Хэш матча";
+            StatusPartyMatch.Size = new Size(252, 32);
+            StatusPartyMatch.TabIndex = 24;
             // 
             // StatusPartyJoin
             // 
-            this.StatusPartyJoin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.StatusPartyJoin.ForeColor = System.Drawing.Color.White;
-            this.StatusPartyJoin.Location = new System.Drawing.Point(16, 480);
-            this.StatusPartyJoin.MaxLength = 64;
-            this.StatusPartyJoin.Name = "StatusPartyJoin";
-            this.StatusPartyJoin.PlaceholderText = "Хэш присоединения";
-            this.StatusPartyJoin.Size = new System.Drawing.Size(252, 32);
-            this.StatusPartyJoin.TabIndex = 25;
+            StatusPartyJoin.BackColor = Color.FromArgb(64, 68, 75);
+            StatusPartyJoin.ForeColor = Color.White;
+            StatusPartyJoin.Location = new Point(16, 480);
+            StatusPartyJoin.MaxLength = 64;
+            StatusPartyJoin.Name = "StatusPartyJoin";
+            StatusPartyJoin.PlaceholderText = "Хэш присоединения";
+            StatusPartyJoin.Size = new Size(252, 32);
+            StatusPartyJoin.TabIndex = 25;
             // 
             // StatusPartySpectate
             // 
-            this.StatusPartySpectate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.StatusPartySpectate.ForeColor = System.Drawing.Color.White;
-            this.StatusPartySpectate.Location = new System.Drawing.Point(276, 480);
-            this.StatusPartySpectate.MaxLength = 64;
-            this.StatusPartySpectate.Name = "StatusPartySpectate";
-            this.StatusPartySpectate.PlaceholderText = "Хэш наблюдения";
-            this.StatusPartySpectate.Size = new System.Drawing.Size(252, 32);
-            this.StatusPartySpectate.TabIndex = 26;
+            StatusPartySpectate.BackColor = Color.FromArgb(64, 68, 75);
+            StatusPartySpectate.ForeColor = Color.White;
+            StatusPartySpectate.Location = new Point(276, 480);
+            StatusPartySpectate.MaxLength = 64;
+            StatusPartySpectate.Name = "StatusPartySpectate";
+            StatusPartySpectate.PlaceholderText = "Хэш наблюдения";
+            StatusPartySpectate.Size = new Size(252, 32);
+            StatusPartySpectate.TabIndex = 26;
             // 
             // StatusPartyPrivacyText
             // 
-            this.StatusPartyPrivacyText.AutoSize = true;
-            this.StatusPartyPrivacyText.ForeColor = System.Drawing.Color.White;
-            this.StatusPartyPrivacyText.Location = new System.Drawing.Point(37, 524);
-            this.StatusPartyPrivacyText.Name = "StatusPartyPrivacyText";
-            this.StatusPartyPrivacyText.Size = new System.Drawing.Size(129, 25);
-            this.StatusPartyPrivacyText.TabIndex = 0;
-            this.StatusPartyPrivacyText.Text = "Вид группы";
+            StatusPartyPrivacyText.AutoSize = true;
+            StatusPartyPrivacyText.ForeColor = Color.White;
+            StatusPartyPrivacyText.Location = new Point(37, 524);
+            StatusPartyPrivacyText.Name = "StatusPartyPrivacyText";
+            StatusPartyPrivacyText.Size = new Size(129, 25);
+            StatusPartyPrivacyText.TabIndex = 0;
+            StatusPartyPrivacyText.Text = "Вид группы";
             // 
             // StatusPartyPrivacyPublic
             // 
-            this.StatusPartyPrivacyPublic.ForeColor = System.Drawing.Color.Black;
-            this.StatusPartyPrivacyPublic.Location = new System.Drawing.Point(188, 520);
-            this.StatusPartyPrivacyPublic.Name = "StatusPartyPrivacyPublic";
-            this.StatusPartyPrivacyPublic.Size = new System.Drawing.Size(170, 32);
-            this.StatusPartyPrivacyPublic.TabIndex = 27;
-            this.StatusPartyPrivacyPublic.Text = "Открытая";
-            this.StatusPartyPrivacyPublic.UseVisualStyleBackColor = true;
-            this.StatusPartyPrivacyPublic.Click += new System.EventHandler(this.StatusPartyPrivacyPublic_Click);
+            StatusPartyPrivacyPublic.ForeColor = Color.Black;
+            StatusPartyPrivacyPublic.Location = new Point(188, 520);
+            StatusPartyPrivacyPublic.Name = "StatusPartyPrivacyPublic";
+            StatusPartyPrivacyPublic.Size = new Size(170, 32);
+            StatusPartyPrivacyPublic.TabIndex = 27;
+            StatusPartyPrivacyPublic.Text = "Открытая";
+            StatusPartyPrivacyPublic.UseVisualStyleBackColor = true;
+            StatusPartyPrivacyPublic.Click += (s, e) => { SetIsPublic(true); };
             // 
             // StatusPartyPrivacyPrivate
             // 
-            this.StatusPartyPrivacyPrivate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.StatusPartyPrivacyPrivate.ForeColor = System.Drawing.Color.White;
-            this.StatusPartyPrivacyPrivate.Location = new System.Drawing.Point(358, 520);
-            this.StatusPartyPrivacyPrivate.Name = "StatusPartyPrivacyPrivate";
-            this.StatusPartyPrivacyPrivate.Size = new System.Drawing.Size(170, 32);
-            this.StatusPartyPrivacyPrivate.TabIndex = 28;
-            this.StatusPartyPrivacyPrivate.Text = "Закрытая";
-            this.StatusPartyPrivacyPrivate.UseVisualStyleBackColor = false;
-            this.StatusPartyPrivacyPrivate.Click += new System.EventHandler(this.StatusPartyPrivacyPrivate_Click);
+            StatusPartyPrivacyPrivate.BackColor = Color.FromArgb(64, 68, 75);
+            StatusPartyPrivacyPrivate.ForeColor = Color.White;
+            StatusPartyPrivacyPrivate.Location = new Point(358, 520);
+            StatusPartyPrivacyPrivate.Name = "StatusPartyPrivacyPrivate";
+            StatusPartyPrivacyPrivate.Size = new Size(170, 32);
+            StatusPartyPrivacyPrivate.TabIndex = 28;
+            StatusPartyPrivacyPrivate.Text = "Закрытая";
+            StatusPartyPrivacyPrivate.UseVisualStyleBackColor = false;
+            StatusPartyPrivacyPrivate.Click += (s, e) => { SetIsPublic(false); };
             // 
             // NotifyIcon
             // 
-            this.NotifyIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.NotifyIcon.BalloonTipText = "Discord Status";
-            this.NotifyIcon.BalloonTipTitle = "Программа была свёрнута в трей";
-            this.NotifyIcon.ContextMenuStrip = this.NotifyMenu;
-            this.NotifyIcon.Icon = Resources.AppIcon;
-            this.NotifyIcon.Text = "Discord Status";
-            this.NotifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon_MouseDoubleClick);
+            NotifyIcon.BalloonTipIcon = ToolTipIcon.Info;
+            NotifyIcon.BalloonTipText = "Discord Status";
+            NotifyIcon.BalloonTipTitle = "Программа была свёрнута в трей";
+            NotifyIcon.ContextMenuStrip = NotifyMenu;
+            NotifyIcon.Icon = Resources.AppIcon;
+            NotifyIcon.Text = "Discord Status";
+            NotifyIcon.MouseDoubleClick += NotifyIcon_MouseDoubleClick;
             // 
             // NotifyMenu
             // 
-            this.NotifyMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
-            this.NotifyMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.NotifyOpen, this.NotifyExit });
-            this.NotifyMenu.Name = "NotifyMenu";
-            this.NotifyMenu.ShowImageMargin = false;
-            this.NotifyMenu.Size = new System.Drawing.Size(97, 48);
+            NotifyMenu.BackColor = Color.FromArgb(47, 49, 54);
+            NotifyMenu.Items.AddRange(new ToolStripItem[] { NotifyOpen, NotifyExit });
+            NotifyMenu.Name = "NotifyMenu";
+            NotifyMenu.ShowImageMargin = false;
+            NotifyMenu.Size = new Size(97, 48);
             // 
             // NotifyOpen
             // 
-            this.NotifyOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.NotifyOpen.ForeColor = System.Drawing.Color.White;
-            this.NotifyOpen.Name = "NotifyOpen";
-            this.NotifyOpen.Size = new System.Drawing.Size(96, 22);
-            this.NotifyOpen.Text = "Открыть";
-            this.NotifyOpen.Click += new System.EventHandler(this.NotifyOpen_Click);
+            NotifyOpen.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            NotifyOpen.ForeColor = Color.White;
+            NotifyOpen.Name = "NotifyOpen";
+            NotifyOpen.Size = new Size(96, 22);
+            NotifyOpen.Text = "Открыть";
+            NotifyOpen.Click += NotifyOpen_Click;
             // 
             // NotifyExit
             // 
-            this.NotifyExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.NotifyExit.ForeColor = System.Drawing.Color.White;
-            this.NotifyExit.Name = "NotifyExit";
-            this.NotifyExit.Size = new System.Drawing.Size(96, 22);
-            this.NotifyExit.Text = "Выйти";
-            this.NotifyExit.Click += new System.EventHandler(this.NotifyExit_Click);
+            NotifyExit.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            NotifyExit.ForeColor = Color.White;
+            NotifyExit.Name = "NotifyExit";
+            NotifyExit.Size = new Size(96, 22);
+            NotifyExit.Text = "Выйти";
+            NotifyExit.Click += NotifyExit_Click;
             // 
             // StatusCustomTime
             // 
-            this.StatusCustomTime.CalendarFont = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.StatusCustomTime.CustomFormat = " dd.MM.yyyy  HH:mm:ss";
-            this.StatusCustomTime.Enabled = false;
-            this.StatusCustomTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.StatusCustomTime.Location = new System.Drawing.Point(258, 216);
-            this.StatusCustomTime.MinDate = new System.DateTime(1969, 12, 31, 0, 0, 0, 0);
-            this.StatusCustomTime.Name = "StatusCustomTime";
-            this.StatusCustomTime.Size = new System.Drawing.Size(270, 32);
-            this.StatusCustomTime.TabIndex = 14;
-            this.StatusCustomTime.Value = new System.DateTime(2022, 12, 12, 12, 0, 0, 0);
+            StatusCustomTime.CalendarFont = new Font("Arial", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            StatusCustomTime.CustomFormat = " dd.MM.yyyy  HH:mm:ss";
+            StatusCustomTime.Enabled = false;
+            StatusCustomTime.Format = DateTimePickerFormat.Custom;
+            StatusCustomTime.Location = new Point(258, 216);
+            StatusCustomTime.MinDate = new DateTime(1969, 12, 31, 0, 0, 0, 0);
+            StatusCustomTime.Name = "StatusCustomTime";
+            StatusCustomTime.Size = new Size(270, 32);
+            StatusCustomTime.TabIndex = 14;
+            StatusCustomTime.Value = new DateTime(2022, 12, 12, 12, 0, 0, 0);
             // 
             // StatusIsCustomTime
             // 
-            this.StatusIsCustomTime.AutoSize = true;
-            this.StatusIsCustomTime.ForeColor = System.Drawing.Color.White;
-            this.StatusIsCustomTime.Location = new System.Drawing.Point(54, 218);
-            this.StatusIsCustomTime.Name = "StatusIsCustomTime";
-            this.StatusIsCustomTime.Size = new System.Drawing.Size(173, 29);
-            this.StatusIsCustomTime.TabIndex = 10;
-            this.StatusIsCustomTime.Text = "Точное время";
-            this.StatusIsCustomTime.UseVisualStyleBackColor = true;
-            this.StatusIsCustomTime.CheckedChanged += new System.EventHandler(this.StatusIsCustomTime_CheckedChanged);
+            StatusIsCustomTime.AutoSize = true;
+            StatusIsCustomTime.ForeColor = Color.White;
+            StatusIsCustomTime.Location = new Point(54, 218);
+            StatusIsCustomTime.Name = "StatusIsCustomTime";
+            StatusIsCustomTime.Size = new Size(173, 29);
+            StatusIsCustomTime.TabIndex = 10;
+            StatusIsCustomTime.Text = "Точное время";
+            StatusIsCustomTime.UseVisualStyleBackColor = true;
+            StatusIsCustomTime.CheckedChanged += (s, e) => { SetIsCustomTime(((CheckBox)s).Checked); };
             // 
             // Status
             // 
-            this.Status.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
-            this.Status.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.ImageKeysState, this.ApplicationState });
-            this.Status.Location = new System.Drawing.Point(0, 632);
-            this.Status.Name = "Status";
-            this.Status.Size = new System.Drawing.Size(544, 22);
-            this.Status.SizingGrip = false;
-            this.Status.TabIndex = 0;
+            Status.BackColor = Color.FromArgb(47, 49, 54);
+            Status.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            Status.Items.AddRange(new ToolStripItem[] { ImageKeysState, ApplicationState });
+            Status.Location = new Point(0, 632);
+            Status.Name = "Status";
+            Status.Size = new Size(544, 22);
+            Status.SizingGrip = false;
+            Status.TabIndex = 0;
             // 
             // ImageKeysState
             // 
-            this.ImageKeysState.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.ImageKeysState.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.ImageKeysState.Name = "ImageKeysState";
-            this.ImageKeysState.Size = new System.Drawing.Size(448, 17);
-            this.ImageKeysState.Spring = true;
-            this.ImageKeysState.Text = "Ключи изображений устарели";
-            this.ImageKeysState.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            ImageKeysState.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            ImageKeysState.ForeColor = SystemColors.GrayText;
+            ImageKeysState.Name = "ImageKeysState";
+            ImageKeysState.Size = new Size(448, 17);
+            ImageKeysState.Spring = true;
+            ImageKeysState.Text = "Ключи изображений устарели";
+            ImageKeysState.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // ApplicationState
             // 
-            this.ApplicationState.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.ApplicationState.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.ApplicationState.Name = "ApplicationState";
-            this.ApplicationState.Size = new System.Drawing.Size(81, 17);
-            this.ApplicationState.Text = "Не запущено";
-            this.ApplicationState.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            ApplicationState.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            ApplicationState.ForeColor = SystemColors.GrayText;
+            ApplicationState.Name = "ApplicationState";
+            ApplicationState.Size = new Size(81, 17);
+            ApplicationState.Text = "Не запущено";
+            ApplicationState.TextAlign = ContentAlignment.MiddleRight;
             // 
             // StatusLargeKey
             // 
-            this.StatusLargeKey.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.StatusLargeKey.DropDownHeight = 2;
-            this.StatusLargeKey.ForeColor = System.Drawing.Color.White;
-            this.StatusLargeKey.FormattingEnabled = true;
-            this.StatusLargeKey.IntegralHeight = false;
-            this.StatusLargeKey.Location = new System.Drawing.Point(16, 264);
-            this.StatusLargeKey.MaxLength = 128;
-            this.StatusLargeKey.Name = "StatusLargeKey";
-            this.StatusLargeKey.Size = new System.Drawing.Size(242, 32);
-            this.StatusLargeKey.TabIndex = 15;
-            this.StatusLargeKey.Tag = "Empty";
-            this.StatusLargeKey.Enter += new System.EventHandler(this.StatusLargeKey_Enter);
-            this.StatusLargeKey.Leave += new System.EventHandler(this.StatusLargeKey_Leave);
+            StatusLargeKey.BackColor = Color.FromArgb(64, 68, 75);
+            StatusLargeKey.DropDownHeight = 2;
+            StatusLargeKey.ForeColor = Color.White;
+            StatusLargeKey.FormattingEnabled = true;
+            StatusLargeKey.IntegralHeight = false;
+            StatusLargeKey.Location = new Point(16, 264);
+            StatusLargeKey.MaxLength = 128;
+            StatusLargeKey.Name = "StatusLargeKey";
+            StatusLargeKey.Size = new Size(242, 32);
+            StatusLargeKey.TabIndex = 15;
+            StatusLargeKey.Tag = "Empty";
+            StatusLargeKey.Enter += (s, e) => { PlaceholderEnter((ComboBox)s); };
+            StatusLargeKey.Leave += (s, e) => { PlaceholderLeave((ComboBox)s, "Ключ большого изображения"); };
             // 
             // StatusSmallKey
             // 
-            this.StatusSmallKey.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.StatusSmallKey.DropDownHeight = 2;
-            this.StatusSmallKey.ForeColor = System.Drawing.Color.White;
-            this.StatusSmallKey.FormattingEnabled = true;
-            this.StatusSmallKey.IntegralHeight = false;
-            this.StatusSmallKey.Location = new System.Drawing.Point(16, 304);
-            this.StatusSmallKey.MaxLength = 128;
-            this.StatusSmallKey.Name = "StatusSmallKey";
-            this.StatusSmallKey.Size = new System.Drawing.Size(242, 32);
-            this.StatusSmallKey.TabIndex = 17;
-            this.StatusSmallKey.Tag = "Empty";
-            this.StatusSmallKey.Enter += new System.EventHandler(this.StatusSmallKey_Enter);
-            this.StatusSmallKey.Leave += new System.EventHandler(this.StatusSmallKey_Leave);
+            StatusSmallKey.BackColor = Color.FromArgb(64, 68, 75);
+            StatusSmallKey.DropDownHeight = 2;
+            StatusSmallKey.ForeColor = Color.White;
+            StatusSmallKey.FormattingEnabled = true;
+            StatusSmallKey.IntegralHeight = false;
+            StatusSmallKey.Location = new Point(16, 304);
+            StatusSmallKey.MaxLength = 128;
+            StatusSmallKey.Name = "StatusSmallKey";
+            StatusSmallKey.Size = new Size(242, 32);
+            StatusSmallKey.TabIndex = 17;
+            StatusSmallKey.Tag = "Empty";
+            StatusSmallKey.Enter += (s, e) => { PlaceholderEnter((ComboBox)s); };
+            StatusSmallKey.Leave += (s, e) => { PlaceholderLeave((ComboBox)s, "Ключ малого изображения"); };
             // 
             // ImageKeysUpdate
             // 
-            this.ImageKeysUpdate.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.ImageKeysUpdate.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ImageKeysUpdate.ForeColor = System.Drawing.Color.Black;
-            this.ImageKeysUpdate.Location = new System.Drawing.Point(16, 568);
-            this.ImageKeysUpdate.Name = "ImageKeysUpdate";
-            this.ImageKeysUpdate.Size = new System.Drawing.Size(192, 48);
-            this.ImageKeysUpdate.TabIndex = 29;
-            this.ImageKeysUpdate.Text = "Обновить ключи изображений";
-            this.ImageKeysUpdate.UseVisualStyleBackColor = true;
-            this.ImageKeysUpdate.Click += new System.EventHandler(this.ImageKeysUpdate_Click);
+            ImageKeysUpdate.FlatStyle = FlatStyle.System;
+            ImageKeysUpdate.Font = new Font("Arial", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            ImageKeysUpdate.ForeColor = Color.Black;
+            ImageKeysUpdate.Location = new Point(16, 568);
+            ImageKeysUpdate.Name = "ImageKeysUpdate";
+            ImageKeysUpdate.Size = new Size(192, 48);
+            ImageKeysUpdate.TabIndex = 29;
+            ImageKeysUpdate.Text = "Обновить ключи изображений";
+            ImageKeysUpdate.UseVisualStyleBackColor = true;
+            ImageKeysUpdate.Click += (s, e) => { ImageKeysUpdateVoid(); };
             // 
             // MainWindow
             // 
-            this.AllowDrop = true;
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.ClientSize = new System.Drawing.Size(544, 654);
-            this.Controls.Add(this.ImageKeysUpdate);
-            this.Controls.Add(this.StatusSmallKey);
-            this.Controls.Add(this.StatusLargeKey);
-            this.Controls.Add(this.Status);
-            this.Controls.Add(this.StatusIsCustomTime);
-            this.Controls.Add(this.StatusCustomTime);
-            this.Controls.Add(this.StatusPartyPrivacyPrivate);
-            this.Controls.Add(this.StatusPartyPrivacyPublic);
-            this.Controls.Add(this.StatusPartyPrivacyText);
-            this.Controls.Add(this.StatusPartySpectate);
-            this.Controls.Add(this.StatusPartyJoin);
-            this.Controls.Add(this.StatusPartyMatch);
-            this.Controls.Add(this.StatusPartyID);
-            this.Controls.Add(this.StatusStop);
-            this.Controls.Add(this.StatusButton2Url);
-            this.Controls.Add(this.StatusButton2Text);
-            this.Controls.Add(this.StatusButton1Url);
-            this.Controls.Add(this.StatusButton1Text);
-            this.Controls.Add(this.StatusSmallText);
-            this.Controls.Add(this.StatusLargeText);
-            this.Controls.Add(this.StatusSeconds);
-            this.Controls.Add(this.StatusMinutes);
-            this.Controls.Add(this.StatusHours);
-            this.Controls.Add(this.StatusRemaining);
-            this.Controls.Add(this.StatusElapsed);
-            this.Controls.Add(this.StatusUpdate);
-            this.Controls.Add(this.StatusPartyMax);
-            this.Controls.Add(this.StatusPartyMin);
-            this.Controls.Add(this.StatusState);
-            this.Controls.Add(this.StatusDetails);
-            this.Controls.Add(this.StatusStart);
-            this.Controls.Add(this.AppIDBox);
-            this.Controls.Add(this.PartyOfText);
-            this.Controls.Add(this.Menu);
-            this.DoubleBuffered = true;
-            this.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = Resources.AppIcon;
-            this.MainMenuStrip = this.Menu;
-            this.MaximizeBox = false;
-            this.Name = "MainWindow";
-            this.Text = "Discord Status";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
-            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainWindow_DragDrop);
-            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainWindow_DragEnter);
-            this.Menu.ResumeLayout(false);
-            this.Menu.PerformLayout();
-            this.NotifyMenu.ResumeLayout(false);
-            this.Status.ResumeLayout(false);
-            this.Status.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AllowDrop = true;
+            AutoScaleMode = AutoScaleMode.None;
+            BackColor = Color.FromArgb(54, 57, 63);
+            ClientSize = new Size(544, 654);
+            Controls.Add(ImageKeysUpdate);
+            Controls.Add(StatusSmallKey);
+            Controls.Add(StatusLargeKey);
+            Controls.Add(Status);
+            Controls.Add(StatusIsCustomTime);
+            Controls.Add(StatusCustomTime);
+            Controls.Add(StatusPartyPrivacyPrivate);
+            Controls.Add(StatusPartyPrivacyPublic);
+            Controls.Add(StatusPartyPrivacyText);
+            Controls.Add(StatusPartySpectate);
+            Controls.Add(StatusPartyJoin);
+            Controls.Add(StatusPartyMatch);
+            Controls.Add(StatusPartyID);
+            Controls.Add(StatusStop);
+            Controls.Add(StatusButton2Url);
+            Controls.Add(StatusButton2Text);
+            Controls.Add(StatusButton1Url);
+            Controls.Add(StatusButton1Text);
+            Controls.Add(StatusSmallText);
+            Controls.Add(StatusLargeText);
+            Controls.Add(StatusSeconds);
+            Controls.Add(StatusMinutes);
+            Controls.Add(StatusHours);
+            Controls.Add(StatusRemaining);
+            Controls.Add(StatusElapsed);
+            Controls.Add(StatusUpdate);
+            Controls.Add(StatusPartyMax);
+            Controls.Add(StatusPartyMin);
+            Controls.Add(StatusState);
+            Controls.Add(StatusDetails);
+            Controls.Add(StatusStart);
+            Controls.Add(AppIDBox);
+            Controls.Add(PartyOfText);
+            Controls.Add(Menu);
+            DoubleBuffered = true;
+            Font = new Font("Arial", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = Resources.AppIcon;
+            MainMenuStrip = Menu;
+            MaximizeBox = false;
+            Name = "MainWindow";
+            Text = "Discord Status";
+            FormClosing += MainWindow_FormClosing;
+            DragDrop += MainWindow_DragDrop;
+            DragEnter += MainWindow_DragEnter;
+            Menu.ResumeLayout(false);
+            Menu.PerformLayout();
+            NotifyMenu.ResumeLayout(false);
+            Status.ResumeLayout(false);
+            Status.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
-        
+
         #endregion
-        
+
         private TextBox AppIDBox;
         private Button StatusStart;
         private TextBox StatusDetails;

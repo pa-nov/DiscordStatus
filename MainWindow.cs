@@ -1,5 +1,4 @@
 ﻿using DiscordRPC;
-using DiscordRPC.Message;
 using Newtonsoft.Json.Linq;
 using System.Diagnostics;
 using System.Text.Json;
@@ -8,11 +7,11 @@ namespace DiscordStatus
 {
     public partial class MainWindow : Form
     {
-        DiscordRpcClient client = new("-1");
+        DiscordRpcClient DiscordClient = new("-1");
         bool IsElapsed = true, IsPublic = true;
         string StringAppIDBox = "", StringStatusPartyMin = "", StringStatusPartyMax = "";
         string StringStatusHours = "", StringStatusMinutes = "", StringStatusSeconds = "";
-        static readonly HttpClient httpClient = new();
+        static readonly HttpClient WebClient = new();
 
         public MainWindow()
         {
@@ -26,29 +25,6 @@ namespace DiscordStatus
             }
             SettingsLoad(path);
         }
-
-        #region Обработка событий
-
-        private void StatusStart_Click(object sender, EventArgs e) { StatusStartVoid(); }
-        private void StatusStop_Click(object sender, EventArgs e) { StatusStopVoid(); }
-        private void StatusUpdate_Click(object sender, EventArgs e) { StatusUpdateVoid(); }
-        private void ImageKeysUpdate_Click(object sender, EventArgs e) { ImageKeysUpdateVoid(); }
-        private void TimerUpdate_Tick(object sender, EventArgs e) { TickVoid(); }
-
-        private void Client_OnError(object sender, ErrorMessage e)
-        {
-            MessageBox.Show(e.Message, "Ошибка (" + e.Code + ")", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-        private void Client_OnReady(object sender, ReadyMessage e)
-        {
-            ApplicationState.Text = "Запущено приложение: " + client.ApplicationID;
-        }
-        private void Client_OnPresenceUpdate(object sender, PresenceMessage e)
-        {
-            this.Text = "Discord Status - " + (e.Name);
-        }
-
-        #endregion
 
         #region Цифровые поля
 
@@ -66,25 +42,6 @@ namespace DiscordStatus
         private void StatusHours_TextChanged(object sender, EventArgs e) { StringStatusHours = TextToInt((TextBox)sender, StringStatusHours); }
         private void StatusMinutes_TextChanged(object sender, EventArgs e) { StringStatusMinutes = TextToInt((TextBox)sender, StringStatusMinutes); }
         private void StatusSeconds_TextChanged(object sender, EventArgs e) { StringStatusSeconds = TextToInt((TextBox)sender, StringStatusSeconds); }
-
-        #endregion
-
-        #region Заполнители у ключей изображений
-
-        private void StatusLargeKey_Enter(object sender, EventArgs e) { PlaceholderEnter((ComboBox)sender); }
-        private void StatusLargeKey_Leave(object sender, EventArgs e) { PlaceholderLeave((ComboBox)sender, "Ключ большого изображения"); }
-        private void StatusSmallKey_Enter(object sender, EventArgs e) { PlaceholderEnter((ComboBox)sender); }
-        private void StatusSmallKey_Leave(object sender, EventArgs e) { PlaceholderLeave((ComboBox)sender, "Ключ малого изображения"); }
-
-        #endregion
-
-        #region Переключатели
-
-        private void StatusElapsed_Click(object sender, EventArgs e) { SetIsElapsed(true); }
-        private void StatusRemaining_Click(object sender, EventArgs e) { SetIsElapsed(false); }
-        private void StatusPartyPrivacyPublic_Click(object sender, EventArgs e) { SetIsPublic(true); }
-        private void StatusPartyPrivacyPrivate_Click(object sender, EventArgs e) { SetIsPublic(false); }
-        private void StatusIsCustomTime_CheckedChanged(object sender, EventArgs e) { SetIsCustomTime(((CheckBox)sender).Checked); }
 
         #endregion
 
@@ -121,7 +78,7 @@ namespace DiscordStatus
         }
         private void MenuOpenGitHub_Click(object sender, EventArgs e)
         {
-            Process.Start(new ProcessStartInfo("https://github.com/pa-nov/Discord-Status/wiki") { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo("https://github.com/pa-nov/DiscordStatus/wiki") { UseShellExecute = true });
         }
 
         #endregion
@@ -183,21 +140,32 @@ namespace DiscordStatus
 
         private void StatusStartVoid()
         {
-            if (Int64.TryParse(AppIDBox.Text, out Int64 AppID))
+            if (Int64.TryParse(AppIDBox.Text, out Int64 appID))
             {
-                if (client.IsInitialized)
+                if (DiscordClient.IsInitialized)
                 {
                     StatusStopVoid();
                 }
                 StatusStart.Enabled = false;
                 StatusStop.Enabled = true;
-                client = new(AppID.ToString());
-                client.RegisterUriScheme();
-                client.Initialize();
-                client.OnError += Client_OnError;
-                client.OnReady += Client_OnReady;
-                client.OnPresenceUpdate += Client_OnPresenceUpdate;
-                ApplicationState.Text = "Запуск приложения: " + client.ApplicationID;
+                DiscordClient = new(appID.ToString());
+                DiscordClient.RegisterUriScheme();
+                DiscordClient.Initialize();
+
+                DiscordClient.OnError += (s, e) =>
+                {
+                    MessageBox.Show(e.Message, "Ошибка (" + e.Code + ")", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                };
+                DiscordClient.OnReady += (s, e) =>
+                {
+                    ApplicationState.Text = "Запущено приложение: " + DiscordClient.ApplicationID;
+                };
+                DiscordClient.OnPresenceUpdate += (s, e) =>
+                {
+                    this.Text = "Discord Status - " + (e.Name);
+                };
+                ApplicationState.Text = "Запуск приложения: " + DiscordClient.ApplicationID;
+                CheckIsAppExist();
             }
             else
             {
@@ -209,17 +177,17 @@ namespace DiscordStatus
         {
             StatusStart.Enabled = true;
             StatusStop.Enabled = false;
-            client.Dispose();
+            DiscordClient.Dispose();
             this.Text = "Discord Status";
             ApplicationState.Text = "Не запущено";
         }
         private void StatusUpdateVoid()
         {
-            if (client == null || !client.IsInitialized || client.ApplicationID != AppIDBox.Text)
+            if (DiscordClient == null || !DiscordClient.IsInitialized || DiscordClient.ApplicationID != AppIDBox.Text)
             {
                 StatusStartVoid();
             }
-            if (client == null || !client.IsInitialized)
+            if (DiscordClient == null || !DiscordClient.IsInitialized)
             {
                 return;
             }
@@ -236,13 +204,13 @@ namespace DiscordStatus
             }
             if (NotEmpty(StatusPartyMin) && NotEmpty(StatusPartyMax))
             {
-                if (Int32.TryParse(StatusPartyMin.Text, out Int32 PartyMin) && PartyMin > 0 &&
-                    Int32.TryParse(StatusPartyMax.Text, out Int32 PartyMax) && PartyMax > 0)
+                if (Int32.TryParse(StatusPartyMin.Text, out Int32 partyMin) && partyMin > 0 &&
+                    Int32.TryParse(StatusPartyMax.Text, out Int32 partyMax) && partyMax > 0)
                 {
-                    if (PartyMin > PartyMax)
+                    if (partyMin > partyMax)
                     {
-                        StatusPartyMin.Text = PartyMax.ToString();
-                        PartyMin = PartyMax;
+                        StatusPartyMin.Text = partyMax.ToString();
+                        partyMin = partyMax;
                     }
                     if (String.IsNullOrWhiteSpace(StatusPartyID.Text))
                     {
@@ -250,8 +218,8 @@ namespace DiscordStatus
                     }
                     activity.Party = new()
                     {
-                        Size = PartyMin,
-                        Max = PartyMax
+                        Size = partyMin,
+                        Max = partyMax
                     };
                 }
                 else
@@ -268,20 +236,20 @@ namespace DiscordStatus
                     StatusCustomTime.Value = new DateTime(1970, 1, 1, 0, 0, 0).AddMilliseconds(1).ToLocalTime();
                 }
 
-                ulong CustomTime = (ulong)((DateTimeOffset)StatusCustomTime.Value).ToUnixTimeMilliseconds();
+                ulong customTime = (ulong)((DateTimeOffset)StatusCustomTime.Value).ToUnixTimeMilliseconds();
 
                 if (IsElapsed)
                 {
                     activity.Timestamps = new()
                     {
-                        StartUnixMilliseconds = CustomTime
+                        StartUnixMilliseconds = customTime
                     };
                 }
                 else
                 {
                     activity.Timestamps = new()
                     {
-                        EndUnixMilliseconds = CustomTime
+                        EndUnixMilliseconds = customTime
                     };
                 }
             }
@@ -289,26 +257,26 @@ namespace DiscordStatus
             {
                 if (NotEmpty(StatusHours) || NotEmpty(StatusMinutes) || NotEmpty(StatusSeconds))
                 {
-                    bool IsHours = Int64.TryParse(StatusHours.Text, out long Hours);
-                    bool IsMinutes = Int64.TryParse(StatusMinutes.Text, out long Minutes);
-                    bool IsSeconds = Int64.TryParse(StatusSeconds.Text, out long Seconds);
-                    if (IsHours || IsMinutes || IsSeconds)
+                    bool isHours = Int64.TryParse(StatusHours.Text, out long hours);
+                    bool isMinutes = Int64.TryParse(StatusMinutes.Text, out long minutes);
+                    bool isSeconds = Int64.TryParse(StatusSeconds.Text, out long seconds);
+                    if (isHours || isMinutes || isSeconds)
                     {
-                        Int64 Time = ((DateTimeOffset)DateTime.Now).ToUnixTimeMilliseconds();
-                        Int64 NewTime = Seconds + Minutes * 60 + Hours * 3600;
+                        Int64 time = ((DateTimeOffset)DateTime.Now).ToUnixTimeMilliseconds();
+                        Int64 newTime = seconds + minutes * 60 + hours * 3600;
 
                         if (IsElapsed)
                         {
                             activity.Timestamps = new()
                             {
-                                StartUnixMilliseconds = (ulong)(Time - NewTime * 1000)
+                                StartUnixMilliseconds = (ulong)(time - newTime * 1000)
                             };
                         }
                         else
                         {
                             activity.Timestamps = new()
                             {
-                                EndUnixMilliseconds = (ulong)(Time + NewTime * 1000)
+                                EndUnixMilliseconds = (ulong)(time + newTime * 1000)
                             };
                         }
                     }
@@ -438,16 +406,16 @@ namespace DiscordStatus
                 }
             }
 
-            client.SetPresence(activity);
+            DiscordClient.SetPresence(activity);
 
             string[] args = Environment.GetCommandLineArgs();
             SettingsSave(Path.GetDirectoryName(args[0]) + "/AutoSave");
         }
         private void TickVoid()
         {
-            if (client.IsInitialized)
+            if (DiscordClient.IsInitialized)
             {
-                client.Invoke();
+                DiscordClient.Invoke();
             }
         }
 
@@ -455,10 +423,10 @@ namespace DiscordStatus
 
         #region Функции переключателей
 
-        private void SetIsElapsed(bool NewValue)
+        private void SetIsElapsed(bool newValue)
         {
-            IsElapsed = NewValue;
-            if (NewValue)
+            IsElapsed = newValue;
+            if (newValue)
             {
                 StatusElapsed.BackColor = Color.White;
                 StatusElapsed.ForeColor = Color.Black;
@@ -473,10 +441,10 @@ namespace DiscordStatus
                 StatusRemaining.ForeColor = Color.Black;
             }
         }
-        private void SetIsPublic(bool NewValue)
+        private void SetIsPublic(bool newValue)
         {
-            IsPublic = NewValue;
-            if (NewValue)
+            IsPublic = newValue;
+            if (newValue)
             {
                 StatusPartyPrivacyPublic.BackColor = Color.White;
                 StatusPartyPrivacyPublic.ForeColor = Color.Black;
@@ -491,59 +459,12 @@ namespace DiscordStatus
                 StatusPartyPrivacyPrivate.ForeColor = Color.Black;
             }
         }
-        private void SetIsCustomTime(bool NewValue)
+        private void SetIsCustomTime(bool newValue)
         {
-            StatusCustomTime.Enabled = NewValue;
-            StatusHours.Enabled = !NewValue;
-            StatusMinutes.Enabled = !NewValue;
-            StatusSeconds.Enabled = !NewValue;
-        }
-        private async void ImageKeysUpdateVoid()
-        {
-            StatusLargeKey.Items.Clear();
-            StatusLargeKey.DropDownHeight = 2;
-            StatusSmallKey.Items.Clear();
-            StatusSmallKey.DropDownHeight = 2;
-            ImageKeysState.Text = "Загрузка ключей изображений";
-
-            try
-            {
-                string assetsURL = "https://discordapp.com/api/oauth2/applications/" + AppIDBox.Text + "/assets";
-                HttpResponseMessage message = await httpClient.GetAsync(assetsURL);
-                message.EnsureSuccessStatusCode();
-                JArray assets = JArray.Parse(await message.Content.ReadAsStringAsync());
-
-                if (assets.Count > 0)
-                {
-                    for (int i = 0; i < assets.Count; i++)
-                    {
-                        var assetName = assets[i]["name"];
-                        StatusLargeKey.Items.Add(assetName);
-                        StatusSmallKey.Items.Add(assetName);
-                    }
-
-                    if (assets.Count < 12)
-                    {
-                        StatusLargeKey.DropDownHeight = 2 + 24 * assets.Count;
-                        StatusSmallKey.DropDownHeight = 2 + 24 * assets.Count;
-                    }
-                    else
-                    {
-                        StatusLargeKey.DropDownHeight = 2 + 24 * 12;
-                        StatusSmallKey.DropDownHeight = 2 + 24 * 12;
-                    }
-
-                    ImageKeysState.Text = "Ключи изображений загружены";
-                }
-                else
-                {
-                    ImageKeysState.Text = "У приложения отсутствуют изображения";
-                }
-            }
-            catch (HttpRequestException error)
-            {
-                ImageKeysState.Text = "Ошибка загрузки ключей (" + error.StatusCode + ")";
-            }
+            StatusCustomTime.Enabled = newValue;
+            StatusHours.Enabled = !newValue;
+            StatusMinutes.Enabled = !newValue;
+            StatusSeconds.Enabled = !newValue;
         }
 
         #endregion
@@ -599,7 +520,7 @@ namespace DiscordStatus
             }
             else
             {
-                if (client.IsInitialized)
+                if (DiscordClient.IsInitialized)
                 {
                     StatusStopVoid();
                 }
@@ -636,6 +557,68 @@ namespace DiscordStatus
         #endregion
 
         #region Функции
+
+        private async void ImageKeysUpdateVoid()
+        {
+            StatusLargeKey.Items.Clear();
+            StatusLargeKey.DropDownHeight = 2;
+            StatusSmallKey.Items.Clear();
+            StatusSmallKey.DropDownHeight = 2;
+            ImageKeysState.Text = "Загрузка ключей изображений";
+
+            try
+            {
+                string assetsURL = "https://discordapp.com/api/oauth2/applications/" + AppIDBox.Text + "/assets";
+                HttpResponseMessage message = await WebClient.GetAsync(assetsURL);
+                message.EnsureSuccessStatusCode();
+                JArray assets = JArray.Parse(await message.Content.ReadAsStringAsync());
+
+                if (assets.Count > 0)
+                {
+                    for (int i = 0; i < assets.Count; i++)
+                    {
+                        var assetName = assets[i]["name"];
+                        StatusLargeKey.Items.Add(assetName);
+                        StatusSmallKey.Items.Add(assetName);
+                    }
+
+                    if (assets.Count < 12)
+                    {
+                        StatusLargeKey.DropDownHeight = 2 + 24 * assets.Count;
+                        StatusSmallKey.DropDownHeight = 2 + 24 * assets.Count;
+                    }
+                    else
+                    {
+                        StatusLargeKey.DropDownHeight = 2 + 24 * 12;
+                        StatusSmallKey.DropDownHeight = 2 + 24 * 12;
+                    }
+
+                    ImageKeysState.Text = "Ключи изображений загружены";
+                }
+                else
+                {
+                    ImageKeysState.Text = "У приложения отсутствуют изображения";
+                }
+            }
+            catch (HttpRequestException error)
+            {
+                ImageKeysState.Text = "Ошибка загрузки ключей (" + error.StatusCode + ")";
+            }
+        }
+        private async void CheckIsAppExist()
+        {
+            try
+            {
+                string assetsURL = "https://discordapp.com/api/oauth2/applications/" + AppIDBox.Text + "/assets";
+                HttpResponseMessage message = await WebClient.GetAsync(assetsURL);
+                message.EnsureSuccessStatusCode();
+            }
+            catch (HttpRequestException)
+            {
+                MessageBox.Show("Приложение не найдено", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                StatusStopVoid();
+            }
+        }
 
         private static bool NotEmpty(TextBox textBox)
         {
